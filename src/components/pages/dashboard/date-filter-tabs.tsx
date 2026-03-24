@@ -15,8 +15,8 @@ const DateFilterTabs = ()=>{
         {label: "This Year", value: "this_year"},
         {label: "Custom", value: "custom"}
     ]
-    const [ currentDate, setCurrentDate] = useState<Number>(0)
-    const change = (index:Number,date:Date)=>{
+    const [ currentDate, setCurrentDate] = useState<number>(0)
+    const change = (index:number,date:Date)=>{
         setCurrentDate(index)
         changePeriod(date.value)
     }

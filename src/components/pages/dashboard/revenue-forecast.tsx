@@ -14,15 +14,14 @@ import {
   Tooltip,
   CartesianGrid 
 } from "recharts";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDashboard } from "@/hooks/use-dashboard";
 import Skeleton from "./dashboard-skeleton";
 
 const RevenueForecast = () => {
     const [showThisYear, setShowThisYear] = useState(true);
     const [showLastYear, setShowLastYear] = useState(false);
-    const { loading, data, refetch} = useDashboard()
-    useEffect(()=>{refetch()},[])
+    const { loading, data } = useDashboard()
   return (
     <Card className="bg-[var(--bg-surface)] p-4 !gap-4">
       <Header level={2} title="Revenue Forecast" className="!text-[var(--content-grey)]" />
@@ -30,11 +29,11 @@ const RevenueForecast = () => {
       {/* Top Section */}
       {loading? <Skeleton className="h-10 w-1/2" /> :<div className="flex gap-2 items-center">
         <span className="text-[var(--content-emphasis)] font-bold text-4xl">
-          {data && data.revenue.total}
+          {data?.revenue.total}
         </span>
 
         <Badge className="text-[var(--content-badge-up)] bg-[var(--bg-badge-up)] flex items-center gap-1">
-          <TrendingUp size={14} /> +{data && data.revenue.trend}%
+          <TrendingUp size={14} /> +{data?.revenue.trend}%
         </Badge>
 
         <span className="text-[var(--content-muted)] text-sm">

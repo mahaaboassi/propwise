@@ -5,12 +5,17 @@ import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { motion } from "framer-motion"
 import { useDashboard } from "@/hooks/use-dashboard"
-import { useEffect } from "react"
 import Skeleton from "./dashboard-skeleton"
 
+const calculateNumber = (number: number) => {
+    if (number > 1000) {
+        return `${(number / 1000).toFixed(1)}K`;
+    }
+    return number;
+};
 const PipelineSummary = () => {
-    const { loading, data, refetch} = useDashboard()
-    useEffect(()=>{refetch()},[])
+  const { loading, data } = useDashboard()
+
   return (
     <Card className="bg-[var(--bg-surface)] p-4 !gap-4">
 
@@ -18,7 +23,9 @@ const PipelineSummary = () => {
         <Header
           title="Pipeline Summary"
           level={2}
-          paragraph={`${data ? data.pipeline.totalDeals: ""} deals across ${data ? data.pipeline.totalStages : ""} stages · ${data ? data.pipeline.totalValue : ""} total value`}
+          paragraph={data
+              ? `${data.pipeline.totalDeals} deals across ${data.pipeline.totalStages} stages · ${data.pipeline.totalValue} total value`
+              : ""}
         />
 
         <Link
@@ -30,15 +37,11 @@ const PipelineSummary = () => {
       </div>
 
       <div className="flex flex-col gap-2">
-        { loading ? [...Array(4)].map((_,i)=><Skeleton className="h-15 w-full" key={`Sketlon_Pipeline_${i}`}/>) : data && data.pipeline.stages.map((stage, idx) => {
-
-          const calculateNumber = (number: number) => {
-            if (number > 1000) {
-              return `${(number / 1000).toFixed(1)}K`;
-            }
-            return number;
-          };
-
+        { loading ? Array.from({ length: 4 }).map((_,i)=><Skeleton className="h-15 w-full" key={`Sketlon_Pipeline_${i}`}/>) :
+         data?.pipeline.stages.map((stage, idx) => {
+              const maxCount = Math.max(
+                ...data.pipeline.stages.map((s) => s.count)
+              );
           return (
             <div key={`Stage_${stage.stage}_${idx}`} className="flex gap-2 items-center">
               <div className="w-[100px]">{stage.stage}</div>
@@ -46,7 +49,7 @@ const PipelineSummary = () => {
                 <motion.div
                     className="bg-[var(--brand-800)] h-[40px] p-1 rounded-lg"
                     initial={{ width: 0 }}
-                    whileInView={{ width: `${(stage.count / 50) * 100}%` }}
+                    whileInView={{ width: `${(stage.count / maxCount) * 100}%` }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                 >

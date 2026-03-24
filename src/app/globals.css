@@ -329,15 +329,6 @@
       @apply border border-[#E1E4ED] p-1 h-6 w-6 rounded-sm border-[1.8px];
     }
     /* Dashboard */
-    .header h1{
-      @apply text-[var(--content-emphasis)] font-bold text-2xl;
-    }
-    .header p{
-      @apply text-[var(--content-subtle)] text-base;
-    }
-    .header h2{
-      @apply text-[var(--content-info)] text-lg
-    }
     .date-filter-tab li{
       @apply px-6 rounded-md
     }

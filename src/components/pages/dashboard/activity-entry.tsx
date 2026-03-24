@@ -1,4 +1,4 @@
-import { iconMap, IconName } from "@/components/icons/icon-map"
+import { iconMap } from "@/components/icons/icon-map"
 import { ActivityEntry } from "@/lib/mock-api"
 type Props = {
   entry: ActivityEntry

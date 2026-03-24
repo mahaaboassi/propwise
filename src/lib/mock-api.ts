@@ -47,5 +47,6 @@ export async function fetchDashboardData(params: {
     }): Promise<DashboardData> {
     await new Promise((resolve) => setTimeout(resolve, 300 + Math.random() * 500));
     // Return mock data matching the Figma design values
+    console.log("params",params)
     return DashboardDataMock
 }
