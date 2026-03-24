@@ -12,13 +12,13 @@ type Props = {
 }
 
 const TaskItem = ({task}:Props)=>{
-    return(<li className="flex justify-between gap-2">
+    return(<li className="flex flex-col mobile-sm:flex-row mobile-md:flex-col desktop-sm:flex-row justify-between gap-2">
     <FieldGroup className="max-w-sm">
       <Field className="items-start" orientation="horizontal">
         <Checkbox checked={task.completed} className="rounded-full" id="terms-checkbox" name={task.title} />
         <div className="flex flex-col gap-2">
-            <Label className={`${task.completed?"line-through":""}`} htmlFor="terms-checkbox">{task.title}</Label>
-            <div className="flex gap-2 items-center text-xs text-[var(--content-muted)] font-medium">
+            <Label className={`${task.completed?"line-through":""} text-xs desktop-sm:text-base`} htmlFor="terms-checkbox">{task.title}</Label>
+            <div className="flex gap-2 items-center text-[0.7rem] desktop-sm:text-xs text-[var(--content-muted)] font-medium">
                 <Clock size={16} />
                 {task.dueLabel} &nbsp; task
             </div>

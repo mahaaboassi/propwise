@@ -17,7 +17,7 @@ const ActivityFeed = ()=>{
             {loading? <div className="flex flex-col gap-3 p-4">
                 {Array.from({ length: 3 }).map((_,i)=><Skeleton className="h-18 w-full" key={`Sketlon_Activity_${i}`}/>)}
             </div> : data?.activities.groups.map((group,idx)=>(<div key={`Activity_Group_${group.label}_${idx}`} >
-                <h3 className="bg-[var(--border-muted)] border-t border-b border-[var(--border-default)] px-4 py-2 text-md text-[var(--content-subtle)] uppercase font-medium mt-4">{group.label}</h3>
+                <h3 className="bg-[var(--border-muted)] border-t border-b border-[var(--border-default)] px-4 py-2 text-xs desktop-sm:text-base text-[var(--content-subtle)] uppercase font-medium mt-4">{group.label}</h3>
                 <div className="px-4">
                     <ul className="border-l-2 border-[var(--border-default)] flex flex-col gap-3 pt-4">
                         {group.entries.map((entry,i)=>(<ActivityEntryComponent  key={`Activity_Group_Entry_${entry.message}_${i}`} entry={entry} />))}

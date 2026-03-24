@@ -21,8 +21,9 @@ const DateFilterTabs = ()=>{
         changePeriod(date.value)
     }
     return<div>
-        <ul className="flex gap-2 p-1.5 h-[50px] bg-[var(--bg-subtle)] rounded-xl w-fit text-base font-normal text-[#9CA3AF] date-filter-tab">
-            {dates.map((date,idx)=>(<li onClick={()=>change(idx,date)} className={`${currentDate === idx ? "active" : ""} flex-center`} 
+        <ul className="flex gap-2 p-1.5 h-[50px] bg-[var(--bg-subtle)] whitespace-nowrap overflow-x-auto w-full  rounded-xl mobile-md:w-fit text-xs mobile-md:text-sm tablet-md:text-base font-normal text-[#9CA3AF]">
+            {dates.map((date,idx)=>(<li onClick={()=>change(idx,date)} className={`${currentDate === idx ? "text-[var(--content-emphasis)] bg-[var(--bg-surface)]" : ""} 
+            px-2 mobile-md:px-4 tablet-md:px-6 rounded-md flex-center cursor-pointer hover:text-[var(--content-subtle)] duration-300 transition-all`} 
                 key={`Date_${date}_${idx}`}>{date.label}</li>))}
         </ul>
     </div>

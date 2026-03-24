@@ -14,12 +14,12 @@ const Header = ({ title, paragraph, level = 2, className }: Props) => {
     <div>
       <Tag className={cn(
           "leading-tight",
-          level === 1 && "text-[var(--content-emphasis)] font-bold text-2xl",
-          level === 2 && "text-[var(--content-info)] text-lg",
+          level === 1 && "text-[var(--content-emphasis)] font-bold text-lg mobile-md:text-2xl",
+          level === 2 && "text-[var(--content-info)] text-sm mobile-md:text-lg",
           level === 3 && "text-[var(--content-info)] font-medium text-base",
           className
         )}>{title}</Tag>
-      {paragraph && <p className="mt-2 text-[var(--content-subtle)] text-base">{paragraph}</p>}
+      {paragraph && <p className="mt-2 text-[var(--content-subtle)] text-sm mobile-md:text-base">{paragraph}</p>}
     </div>
   );
 };

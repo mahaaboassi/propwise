@@ -29,9 +29,11 @@ export default function RootLayout({
       className={`${inter.variable} ${figtree.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <main className="flex p-5">
-            <Sidebar/>
-            <Card className="bg-[var(--content-inverted)] p-7 w-full ml-5">
+        <main className="flex p-2 mobile-md:p-5">
+            <div className="relative">
+              <Sidebar/>
+            </div>
+            <Card className="bg-[var(--content-inverted)] p-4 tablet-md:p-7 w-full mt-20 tablet-md:ml-5 tablet-md:mt-0">
                 {children}
             </Card>
         </main>

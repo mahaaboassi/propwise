@@ -7,7 +7,7 @@ const KPICards = () => {
     const { loading, data} = useDashboard()
     if (loading) {
         return (
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid mobile-md:grid-cols-2 desktop-sm:grid-cols-4 gap-4">
             {Array.from({ length: 4 }).map((_, i) => (
             <Skeleton key={i} className="h-25 w-full" />
             ))}
@@ -17,7 +17,7 @@ const KPICards = () => {
 
     if (!data) return null;
 
-    return(<div className="grid grid-cols-4 gap-4">
+    return(<div className="grid mobile-md:grid-cols-2 desktop-sm:grid-cols-4 gap-4">
         { data.kpis.map((kpi,idx)=>(
             <KPICard key={`KPI_Card_${kpi.label}_${idx}`}
                 label={kpi.label} trend={kpi.trend} trendDirection={kpi.trendDirection}

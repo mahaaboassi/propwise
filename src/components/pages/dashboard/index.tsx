@@ -20,28 +20,38 @@ import  PipelineSummary  from "./pipeline-summary";
 import  TasksPanel  from "./tasks-panel"
 import { useDashboard } from "@/hooks/use-dashboard";
 import { useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
 const DashbaordPage = ()=>{
     const { refetch } = useDashboard()
     useEffect(()=>{refetch()},[refetch])
     return(<div className="space-y-5">
-        <Header level={1} title="Dashborad" paragraph="Here's your pipeline health and sales activity at a glance." />
+        <div className="flex justify-between">
+            <Header level={1} title="Dashborad" paragraph="Here's your pipeline health and sales activity at a glance." />
+            <Button className="">
+                <Plus className="" size={15}/> <span className="-mt-1">Create</span>
+            </Button>
+        </div>
+        
         <DateFilterTabs/>
         <KPICards/>
         <div className="grid grid-cols-3 gap-4">
-            <div className="col-span-2">
+            <div className="col-span-3 mobile-md:col-span-2">
                 <RevenueForecast/>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-3 mobile-md:col-span-1">
                 <ActivityFeed/>
             </div>
         </div>
         <div className="grid grid-cols-3 gap-4">
-            <div className="col-span-2">
+            <div className="col-span-3 mobile-md:col-span-2">
                 <PipelineSummary/>
             </div>
-            <div className="col-span-1">
+            <div className="col-span-3 mobile-md:col-span-1">
                 <TasksPanel/>
             </div>
+        </div>
+        <div className="blur-div ">
         </div>
     </div>)
 }

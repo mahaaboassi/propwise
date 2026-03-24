@@ -27,8 +27,8 @@ const RevenueForecast = () => {
       <Header level={2} title="Revenue Forecast" className="!text-[var(--content-grey)]" />
 
       {/* Top Section */}
-      {loading? <Skeleton className="h-10 w-1/2" /> :<div className="flex gap-2 items-center">
-        <span className="text-[var(--content-emphasis)] font-bold text-4xl">
+      {loading? <Skeleton className="h-10 w-1/2" /> :<div className="flex flex-wrap gap-2 items-center">
+        <span className="text-[var(--content-emphasis)] font-bold text-xl desktop-sm:text-4xl">
           {data?.revenue.total}
         </span>
 

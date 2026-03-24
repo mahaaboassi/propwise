@@ -9,13 +9,13 @@ import Skeleton from "./dashboard-skeleton"
 const TasksPanel = ()=>{
     const { loading, data } = useDashboard()
     return(<Card className="bg-[var(--bg-surface)] !gap-4">
-        <div className="flex justify-between w-full p-4 border-b-2 border-[var(--border-default)] items-center">
+        <div className="flex gap-2 flex-col desktop-sm:flex-row desktop-sm:items-center justify-between w-full p-4 border-b-2 border-[var(--border-default)] ">
             <Header
             title="Tasks & Reminders"
             className="!font-bold"
             level={2}/>
 
-            <div className="link flex-center flex gap-2"
+            <div className="link desktop-sm:flex-center flex gap-2"
             >
              <Plus size={17} /> Quick Add
             </div>

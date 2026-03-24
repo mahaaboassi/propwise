@@ -19,7 +19,7 @@ const PipelineSummary = () => {
   return (
     <Card className="bg-[var(--bg-surface)] p-4 !gap-4">
 
-      <div className="flex justify-between w-full">
+      <div className="flex gap-2 flex-col desktop-sm:flex-row justify-between w-full">
         <Header
           title="Pipeline Summary"
           level={2}
@@ -30,7 +30,7 @@ const PipelineSummary = () => {
 
         <Link
           href="#"
-          className="link flex-center flex  gap-2 "
+          className="link desktop-sm:flex-center flex  gap-2 "
         >
           Details <ArrowUpRight size={17} />
         </Link>
@@ -43,8 +43,8 @@ const PipelineSummary = () => {
                 ...data.pipeline.stages.map((s) => s.count)
               );
           return (
-            <div key={`Stage_${stage.stage}_${idx}`} className="flex gap-2 items-center">
-              <div className="w-[100px]">{stage.stage}</div>
+            <div key={`Stage_${stage.stage}_${idx}`} className="flex flex-col gap-1 tablet-md:flex-row tablet-md:gap-2 tablet-md:items-center">
+              <div className="w-[80px] tablet-md:w-[100px] text-sm">{stage.stage}</div>
               <div className="flex-1">
                 <motion.div
                     className="bg-[var(--brand-800)] h-[40px] p-1 rounded-lg"
@@ -53,7 +53,7 @@ const PipelineSummary = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                 >
-                  <div className="bg-[var(--bg-surface-opactity)] text-white w-fit h-full flex items-center rounded-lg px-2 text-xs">
+                  <div className="bg-[var(--bg-surface-opactity)] text-white w-fit h-full flex items-center rounded-lg px-2 text-[0.6rem] desktop-sm:text-xs">
                     <span className="font-medium">{stage.count}</span>
                     &nbsp; {stage.currency} {calculateNumber(stage.value)}
                   </div>

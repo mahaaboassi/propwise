@@ -22,7 +22,7 @@ const KPICard = ({
       {/* Left */}
       <div>
         <h2 className="text-sm text-[var(--content-subtle)]">{label}</h2>
-        <span className="text-[var(--content-emphasis)] font-bold text-xl">
+        <span className="text-[var(--content-emphasis)] font-bold text-lg desktop-sm:text-xl">
           {value}
         </span>
       </div>
