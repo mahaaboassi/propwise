@@ -16,7 +16,10 @@ const KPICard = ({
     name: index,
     value,
   }));
-
+  const positionStyles = {
+    up: "text-[var(--content-badge-up)] bg-[var(--bg-badge-up)]",
+    down: "text-[var(--content-badge-down)] bg-[var(--bg-badge-down)]",
+  }
   return (
     <div className="flex justify-between items-center bg-[var(--bg-surface)] rounded-xl shadow-[var(--drop-shadow)] p-4"> 
       {/* Left */}
@@ -60,15 +63,9 @@ const KPICard = ({
         </ResponsiveContainer>
 
         {/* Badge */}
-        {trendDirection === "up" ? (
-          <Badge className="text-[var(--content-badge-up)] bg-[var(--bg-badge-up)] flex items-center gap-1">
+          <Badge className={`${positionStyles[trendDirection]} flex items-center gap-1`}>
             <TrendingUp size={14} /> +{trend}%
           </Badge>
-        ) : (
-          <Badge className="text-[var(--content-badge-down)] bg-[var(--bg-badge-down)] flex items-center gap-1">
-            <TrendingDown size={14} /> -{trend}%
-          </Badge>
-        )}
       </div>
     </div>
   );
