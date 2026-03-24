@@ -1,12 +1,16 @@
 "use client"
 import { Card } from "@/components/ui/card"
 import Header from "./dashboard-header"
-import { DashboardDataMock } from "@/lib/mock-data"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { motion } from "framer-motion"
+import { useDashboard } from "@/hooks/use-dashboard"
+import { useEffect } from "react"
+import Skeleton from "./dashboard-skeleton"
 
 const PipelineSummary = () => {
+    const { loading, data, refetch} = useDashboard()
+    useEffect(()=>{refetch()},[])
   return (
     <Card className="bg-[var(--bg-surface)] p-4 !gap-4">
 
@@ -14,7 +18,7 @@ const PipelineSummary = () => {
         <Header
           title="Pipeline Summary"
           level={2}
-          paragraph={`${DashboardDataMock.pipeline.totalDeals} deals across ${DashboardDataMock.pipeline.totalStages} stages · ${DashboardDataMock.pipeline.totalValue} total value`}
+          paragraph={`${data ? data.pipeline.totalDeals: ""} deals across ${data ? data.pipeline.totalStages : ""} stages · ${data ? data.pipeline.totalValue : ""} total value`}
         />
 
         <Link
@@ -26,7 +30,7 @@ const PipelineSummary = () => {
       </div>
 
       <div className="flex flex-col gap-2">
-        {DashboardDataMock.pipeline.stages.map((stage, idx) => {
+        { loading ? [...Array(4)].map((_,i)=><Skeleton className="h-15 w-full" key={`Sketlon_Pipeline_${i}`}/>) : data && data.pipeline.stages.map((stage, idx) => {
 
           const calculateNumber = (number: number) => {
             if (number > 1000) {

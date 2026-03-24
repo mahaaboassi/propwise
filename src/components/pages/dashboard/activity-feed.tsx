@@ -1,24 +1,30 @@
+"use client"
 import { Card } from "@/components/ui/card"
 import Header from "./dashboard-header"
-import { DashboardDataMock } from "@/lib/mock-data"
 import ActivityEntryComponent from "./activity-entry"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
+import { useDashboard } from "@/hooks/use-dashboard"
+import { useEffect } from "react"
+import Skeleton from "./dashboard-skeleton"
 
 const ActivityFeed = ()=>{
+    const { loading, data, refetch} = useDashboard()
+    useEffect(()=>{refetch()},[])
     return(<Card className="bg-[var(--bg-surface)] py-4 !gap-0">
         <div className="px-4">
             <Header level={2} title="Activity Feed" />
         </div>
         <div>
-            {DashboardDataMock.activities.groups.map((group,idx)=>(<div key={`Activity_Group_${group.label}_${idx}`} >
+            {loading? <div className="flex flex-col gap-3 p-4">
+                {[...Array(3)].map((_,i)=><Skeleton className="h-18 w-full" key={`Sketlon_Activity_${i}`}/>)}
+            </div> : data && data.activities.groups.map((group,idx)=>(<div key={`Activity_Group_${group.label}_${idx}`} >
                 <h3 className="bg-[var(--border-muted)] border-t border-b border-[var(--border-default)] px-4 py-2 text-md text-[var(--content-subtle)] uppercase font-medium mt-4">{group.label}</h3>
                 <div className="px-4">
                     <ul className="border-l-2 border-[var(--border-default)] flex flex-col gap-3 pt-4">
                         {group.entries.map((entry,i)=>(<ActivityEntryComponent  key={`Activity_Group_Entry_${entry.message}_${i}`} entry={entry} />))}
                     </ul>
                 </div>
-                
             </div>))}
         </div>
         <div>

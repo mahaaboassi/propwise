@@ -18,8 +18,7 @@ const KPICard = ({
   }));
 
   return (
-    <div className="flex justify-between items-center bg-[var(--bg-surface)] rounded-xl shadow-[var(--drop-shadow)] p-4">
-      
+    <div className="flex justify-between items-center bg-[var(--bg-surface)] rounded-xl shadow-[var(--drop-shadow)] p-4"> 
       {/* Left */}
       <div>
         <h2 className="text-sm text-[var(--content-subtle)]">{label}</h2>

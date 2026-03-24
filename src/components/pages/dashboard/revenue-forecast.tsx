@@ -2,7 +2,6 @@
 
 import { Card } from "@/components/ui/card";
 import Header from "./dashboard-header";
-import { DashboardDataMock } from "@/lib/mock-data";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp } from "lucide-react";
 
@@ -15,31 +14,38 @@ import {
   Tooltip,
   CartesianGrid 
 } from "recharts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDashboard } from "@/hooks/use-dashboard";
+import Skeleton from "./dashboard-skeleton";
 
 const RevenueForecast = () => {
     const [showThisYear, setShowThisYear] = useState(true);
     const [showLastYear, setShowLastYear] = useState(false);
+    const { loading, data, refetch} = useDashboard()
+    useEffect(()=>{refetch()},[])
   return (
     <Card className="bg-[var(--bg-surface)] p-4 !gap-4">
       <Header level={2} title="Revenue Forecast" className="!text-[var(--content-grey)]" />
 
       {/* Top Section */}
-      <div className="flex gap-2 items-center">
+      {loading? <Skeleton className="h-10 w-1/2" /> :<div className="flex gap-2 items-center">
         <span className="text-[var(--content-emphasis)] font-bold text-4xl">
-          {DashboardDataMock.revenue.total}
+          {data && data.revenue.total}
         </span>
 
         <Badge className="text-[var(--content-badge-up)] bg-[var(--bg-badge-up)] flex items-center gap-1">
-          <TrendingUp size={14} /> +{DashboardDataMock.revenue.trend}%
+          <TrendingUp size={14} /> +{data && data.revenue.trend}%
         </Badge>
 
         <span className="text-[var(--content-muted)] text-sm">
           vs last year
         </span>
-      </div>
+      </div>}
       {/* Control in Showing   */}
-      <div className="flex gap-4 text-sm text-[var(--content-subtle)]">
+      {loading? <div className="flex gap-4 ">
+        <Skeleton className="w-20 h-6" />
+        <Skeleton className="w-20 h-6" />
+      </div> :<div className="flex gap-4 text-sm text-[var(--content-subtle)]">
             <div
                 onClick={() => setShowThisYear(!showThisYear)}
                 className={`flex items-center cursor-pointer gap-2 ${
@@ -59,11 +65,11 @@ const RevenueForecast = () => {
                 <span className="w-4 h-1.5 rounded-full bg-[var(--color-chart-2)]" />
                 Last Year
             </div>
-        </div>
+        </div>}
       {/* Chart */}
-      <div className="w-full h-[200px]">
+      {loading? <Skeleton className="w-full h-50" /> : <div className="w-full h-[200px]">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={DashboardDataMock.revenue.data}>
+          {data && <LineChart data={data.revenue.data}>
             <defs>
             <filter id="lineShadow" x="-0.5%" y="0%" width="200%" height="300%">
                 <feDropShadow 
@@ -126,9 +132,9 @@ const RevenueForecast = () => {
               strokeDasharray="4 4"
               dot={false}
             />}
-          </LineChart>
+          </LineChart>}
         </ResponsiveContainer>
-      </div>
+      </div>}
     </Card>
   );
 };

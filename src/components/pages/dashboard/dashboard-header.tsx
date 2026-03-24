@@ -11,10 +11,10 @@ const Header = ({ title, paragraph, level = 2, className }: Props) => {
   const Tag = `h${level}` as keyof React.JSX.IntrinsicElements;
 
   return (
-    <section className={`header`}>
+    <div className={`header`}>
       <Tag className={className}>{title}</Tag>
       {paragraph && <p className="mt-2">{paragraph}</p>}
-    </section>
+    </div>
   );
 };
 
