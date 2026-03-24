@@ -34,6 +34,17 @@ const KPICard = ({
         {/* Sparkline */}
         <ResponsiveContainer width={100} height={40}>
           <LineChart data={formattedData}>
+            <defs>
+            <filter id="lineShadowSpark" x="0%" y="-10%" width="140%" height="140%">
+                <feDropShadow 
+                dx="0" 
+                dy="8" 
+                stdDeviation="6" 
+                floodColor="#000" 
+                floodOpacity="0.3" 
+                />
+            </filter>
+            </defs>
             <Line
               type="monotone"
               dataKey="value"
@@ -44,6 +55,7 @@ const KPICard = ({
               }
               strokeWidth={2}
               dot={false}
+              style={{ filter: "url(#lineShadowSpark)" }}
             />
           </LineChart>
         </ResponsiveContainer>

@@ -34,24 +34,32 @@ export const DashboardDataMock = {
     ],
 
     revenue: {
-      total: "AED 1.42M",
+      total: "AED 1,621,000",
       trend: 24.6,
       data: [
-        { month: "Jan", thisYear: 120, lastYear: 90 },
-        { month: "Feb", thisYear: 150, lastYear: 110 },
-        { month: "Mar", thisYear: 180, lastYear: 130 },
-        { month: "Apr", thisYear: 200, lastYear: 140 },
+          { month: "Jan", thisYear: 80, lastYear: 90 },
+          { month: "Feb", thisYear: 85, lastYear: 110 },
+          { month: "Mar", thisYear: 90, lastYear: 130 },
+          { month: "Apr", thisYear: 100, lastYear: 140 },
+          { month: "May", thisYear: 150, lastYear: 170 },
+          { month: "Jun", thisYear: 175, lastYear: 180 },
+          { month: "Jul", thisYear: 180, lastYear: 190 },
+          { month: "Aug", thisYear: 190, lastYear: 200 },
+          { month: "Sep", thisYear: 205, lastYear: 210 },
+          { month: "Oct", thisYear: 200, lastYear: 225 },
+          { month: "Nov", thisYear: 215, lastYear: 230 },
+          { month: "Dec", thisYear: 230, lastYear: 240 },
       ],
     },
 
     pipeline: {
-      totalDeals: 43,
+      totalDeals: 113,
       totalStages: 6,
       totalValue: "AED 2.75M",
       stages: [
-        { stage: "New Lead", count: 42, value: 840000, currency: "AED" },
-        { stage: "Contacted", count: 28, value: 560000, currency: "AED" },
-        { stage: "Qualified", count: 18, value: 450000, currency: "AED" },
+        { stage: "New Lead", count: 50, value: 840000, currency: "AED" },
+        { stage: "Contacted", count: 42, value: 560000, currency: "AED" },
+        { stage: "Qualified", count: 28, value: 450000, currency: "AED" },
         { stage: "Proposal", count: 18, value: 450000, currency: "AED" },
         { stage: "Negotiation", count: 12, value: 300000, currency: "AED" },
         { stage: "Closed Won", count: 8, value: 200000, currency: "AED" },
@@ -61,15 +69,35 @@ export const DashboardDataMock = {
     activities: {
       groups: [
         {
-          label: "Today",
+          label: "Just now",
           entries: [
             {
               id: "1",
-              message: "Updated deal #1024 documents",
-              highlights: [{ text: "deal #1024", type: "deal" }],
-              timestamp: "4:30 PM",
+              message: "You were assigned a new lead:",
+              highlights: [{ text: "Ahmed Al-Rashid", type: "person" }],
+              timestamp: "10 min ago",
               relativeTime: "now",
-              icon: "task",
+              icon: "lead",
+            },
+            {
+              id: "2",
+              message: "System transferred deal to",
+              highlights: [{ text: "Negotiation stage", type: "stage" }],
+              timestamp: "25 min ago",
+              relativeTime: "now",
+              icon: "deal",
+            },
+          ],
+        },{
+          label: "Earlier today",
+          entries: [
+            {
+              id: "1",
+              message: "Nadia K. logged a call with",
+              highlights: [{ text: "James Chen", type: "person" }],
+              timestamp: "1h ago",
+              relativeTime: "now",
+              icon: "call",
             },
           ],
         },
@@ -77,7 +105,7 @@ export const DashboardDataMock = {
     },
 
     tasks: {
-      completed: 3,
+      completed: 2,
       total: 5,
       items: [
         {
@@ -96,7 +124,7 @@ export const DashboardDataMock = {
           isOverdue: false,
           type: "email",
           priority: "high",
-          completed: false,
+          completed: true,
         },
         {
           id: "3",
@@ -105,7 +133,7 @@ export const DashboardDataMock = {
           isOverdue: false,
           type: "meeting",
           priority: "med",
-          completed: false,
+          completed: true,
         },
         {
           id: "4",

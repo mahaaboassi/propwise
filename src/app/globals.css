@@ -69,6 +69,8 @@
     /* Core */
     --brand-50: #EBF0FF;
     --brand-700: #203F9E;
+    --brand-800: #152B6D;
+    --link-color: #476CDC;
     --custom-border: #E1E4ED;
     --icon-color: #B4B9C9;
     --stone-500: #757575;
@@ -83,6 +85,8 @@
     --content-badge-up: #188540;
     --bg-badge-down: #FEF2F2;
     --content-badge-down: #B91C1C;
+    --bg-badge-med: #FFFBEB;
+    --content-badge-med: #B45309;
     /* --inner-shadow: ; */
   /* Alias  */
   /* Background */
@@ -95,7 +99,8 @@
     --bg-success: #E2FBE8;
     --bg-attention: #FCEED8;
     --bg-error: #F9E3E2;
-    --bg-surface: #ffffff; /* Extra for Help*/
+    --bg-surface: #ffffff; /* Extra */
+    --bg-surface-opactity: rgba(255, 255, 255, 0.2); /* Extra */
   /* Border */
     --border-emphasis: #9CA3AF;
     --border-default: #D1D5DB;
@@ -201,6 +206,7 @@
     --success-info: #E2FBE8;
     --attention-content: #FCEED8;
     --content-error: #F9E3E2;
+    --content-grey: #686868; /* Extra */
   /* Brand */
     --brand-bg-emphasis: #D7E1FF;
     --brand-bg-default: #3567FF;
@@ -329,6 +335,9 @@
     .header p{
       @apply text-[var(--content-subtle)] text-base;
     }
+    .header h2{
+      @apply text-[var(--content-info)] text-lg
+    }
     .date-filter-tab li{
       @apply px-6 rounded-md
     }
@@ -338,5 +347,7 @@
     .date-filter-tab li.active{
       @apply rounded-md text-[var(--content-emphasis)] bg-[var(--bg-surface)]
     }
-  
+    .link{
+      @apply text-[var(--link-color)] hover:text-[var(--brand-700)]  transition-all duration-300 font-medium cursor-pointer;
+    }
   }

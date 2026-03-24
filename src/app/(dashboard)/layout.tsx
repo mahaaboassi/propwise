@@ -31,7 +31,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <main className="flex p-5">
             <Sidebar/>
-            <Card className="bg-[var(--content-inverted)] p-7 w-full h-screen ml-5">
+            <Card className="bg-[var(--content-inverted)] p-7 w-full ml-5">
                 {children}
             </Card>
         </main>

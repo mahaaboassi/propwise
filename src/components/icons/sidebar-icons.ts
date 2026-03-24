@@ -1,4 +1,4 @@
-// All Custom Icon inside Figma Design belong to Sidebar
+// All Icons inside Figma Design belong to Sidebar
 import { DashboardIcon } from "./custom/dashboard-icon";
 import { InboxIcon } from "./custom/inbox-icon";
 import { LeadsdIcon } from "./custom/leads-icon";
