@@ -113,7 +113,8 @@
     --bg-attention: #FCEED8;
     --bg-error: #F9E3E2;
     --bg-surface: #ffffff; /* Extra */
-    --bg-surface-opactity: rgba(255, 255, 255, 0.2); /* Extra */
+    --bg-surface-opactity: rgba(255, 255, 255, 0.416); /* Extra */
+    --bg-surface-opactity-2: rgba(79, 78, 78, 0.316); /* Extra */
   /* Border */
     --border-emphasis: #9CA3AF;
     --border-default: #D1D5DB;

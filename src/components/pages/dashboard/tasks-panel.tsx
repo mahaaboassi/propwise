@@ -24,7 +24,7 @@ const TasksPanel = ()=>{
                 
             </div>
             {loading? <Skeleton className="h-10 w-full" /> : <div className="flex items-center gap-1">
-                {data?.tasks && <div className="flex-1 h-2 bg-[var(--bg-default)] rounded-md ">
+                {data?.tasks && <div className="flex-1 h-2 bg-[var(--bg-surface-opactity-2)] rounded-md ">
                     <motion.div
                     initial={{ width: 0 }}
                     whileInView={{
