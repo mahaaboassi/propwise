@@ -36,7 +36,7 @@ const Sidebar = () => {
   }
 
   return (
-    <aside className="flex flex-col gap-4 tablet-md:w-[224px] tablet-md:sticky top-5">
+    <nav className="flex flex-col gap-4 tablet-md:w-[224px] tablet-md:sticky top-5">
       {/* Top Bar */}
       <div className="fixed z-50 left-0 right-0 top-0 p-4 shadow bg-[var(--content-inverted)] flex items-center gap-4 
                       tablet-md:shadow-none tablet-md:bg-background tablet-md:p-0 tablet-md:items-start tablet-md:static tablet-md:flex-col">
@@ -58,12 +58,12 @@ const Sidebar = () => {
 
           <div className="flex justify-between items-center w-full">
             <div>
-              <h2 className="text-[var(--content-default)] text-md font-medium">
+              <h2 className="text-[var(--content-default)] text-base font-medium">
                 Lina Rahman
               </h2>
               <p className="flex items-center gap-1 text-xs text-[#687287]">
                 Atlas Estates
-                <Badge className="bg-[var(--bg-info)] text-xs text-[var(--content-info)]">
+                <Badge className="bg-[var(--bg-info)] text-xs text-[var(--content-info)] rounded-md">
                   Pro
                 </Badge>
               </p>
@@ -104,7 +104,7 @@ const Sidebar = () => {
             animate={{ width: openMenuSmallSize ? 224 : 0 }}
             exit={{ width: 0 }}
             transition={{ duration: 0.3,   }}
-            className={`sidebar-scroll overflow-y-auto h-screen tablet-md:h-[calc(100vh-250px)] flex-col tablet-md:!w-[224px] w-full gap-1 text-md font-normal
+            className={`sidebar-scroll overflow-y-auto h-screen tablet-md:h-[calc(100vh-250px)] flex-col tablet-md:!w-[224px] w-full gap-1 text-base font-normal
             ${openMenuSmallSize ? "fixed top-0 px-4 bottom-0 right-0 overflow-hidden bg-[var(--content-inverted)] shadow z-50 pt-5 pl-4" : "hidden  tablet-md:flex"}`}
           >
 
@@ -164,11 +164,13 @@ const Sidebar = () => {
                               <CollapsibleContent className="ml-6 flex flex-col gap-1 mt-1">
                                 {child.children.map((sub, j) => {
                                   const isSubActive = pathname === sub.link
+                                  // const CollapseIcon = sub.icon ? iconMap[sub.icon as IconName] : null
                                   return (
                                     <div
                                       key={j}
-                                      className={`item-menu text-sm ${isSubActive ? "active" : ""}`}
+                                      className={`item-menu text-sm ${isSubActive ? "active" : ""} flex items-center gap-1`}
                                     >
+                                      {/* {CollapseIcon && <CollapseIcon className="icon-menu" />} */}
                                       {sub.name}
                                     </div>
                                   )
@@ -186,7 +188,7 @@ const Sidebar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </aside>
+    </nav>
   )
 }
 

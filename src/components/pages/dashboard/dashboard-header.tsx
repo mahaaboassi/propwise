@@ -1,27 +1,21 @@
-import { cn } from "@/lib/utils";
-import React from "react";
+"use client"
+import { Button } from "@/components/ui/button"
+import Header from "@/components/ui/header"
+import { Moon, Plus, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 
-type Props = {
-  title: string;
-  paragraph?: string;
-  className?: string;
-  level?: 1 | 2 | 3 | 4 | 5 | 6;
-};
-
-const Header = ({ title, paragraph, level = 2, className }: Props) => {
-  const Tag = `h${level}` as keyof React.JSX.IntrinsicElements;
-  return (
-    <div>
-      <Tag className={cn(
-          "leading-tight",
-          level === 1 && "text-[var(--content-emphasis)] font-bold text-lg mobile-md:text-2xl",
-          level === 2 && "text-[var(--content-info)] text-sm mobile-md:text-lg",
-          level === 3 && "text-[var(--content-info)] font-medium text-base",
-          className
-        )}>{title}</Tag>
-      {paragraph && <p className="mt-2 text-[var(--content-subtle)] text-sm mobile-md:text-base">{paragraph}</p>}
-    </div>
-  );
-};
-
-export default Header;
+const HeaderDashboard = ()=>{
+  const { theme, setTheme } = useTheme()
+  return <div className="flex flex-col gap-5 tablet-md:flex-row justify-between">
+            <Header level={1} title="Dashborad" paragraph="Here's your pipeline health and sales activity at a glance." />
+            <div className="flex gap-2">
+                <Button className="">
+                    <Plus className="" size={15}/> <span className="-mt-1">Create</span>
+                </Button>
+                <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="">
+                    {theme === "dark" ? <Sun size={15} /> : <Moon size={15} /> } <span className="-mt-1">Theme</span>
+                </Button>
+            </div>
+        </div>
+}
+export default HeaderDashboard

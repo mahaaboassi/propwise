@@ -17,8 +17,6 @@ const getTrend = (current: number, previous: number): {
     trend: number;
     trendDirection: TrendDirection;
   } => {
-    console.log(current , previous);
-    
   return {
     trend: Number((((current - previous) / previous) * 100).toFixed(1)),
     trendDirection: current >= previous ? "up" : "down",
@@ -36,7 +34,7 @@ const DashboardDataMock = {
     },
     {
       label: "Revenue YTD",
-      value: "1200",
+      value: "142",
       trend: 24.6,
       trendDirection: "up",
       sparklineData: [20, 25, 30, 28, 35, 50, 60],

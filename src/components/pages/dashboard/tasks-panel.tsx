@@ -1,6 +1,6 @@
 "use client"
 import { Card } from "@/components/ui/card"
-import Header from "./dashboard-header"
+import Header from "@/components/ui/header"
 import { Plus } from "lucide-react"
 import TaskItem from "./task-item"
 import { useDashboard } from "@/hooks/use-dashboard"
@@ -23,7 +23,7 @@ const TasksPanel = ()=>{
                 </div>
                 
             </div>
-            {loading? <Skeleton className="h-10 w-full" /> : <div className="flex items-center gap-1">
+            {loading? <Skeleton className="h-12 w-full" /> : <div className="flex items-center gap-1">
                 {data?.tasks && <div className="flex-1 h-2 bg-[var(--bg-surface-opactity-2)] rounded-md ">
                     <motion.div
                     initial={{ width: 0 }}
@@ -40,7 +40,7 @@ const TasksPanel = ()=>{
             </div>}
         </div>
         <ul className="px-4 flex flex-col gap-4">
-            {loading ? Array.from({ length: 4 }).map((_,i)=><li key={`Sketlon_Task_${i}`}><Skeleton className="h-15 w-full" /></li>)
+            {loading ? Array.from({ length: 4 }).map((_,i)=><li key={`Sketlon_Task_${i}`}><Skeleton className="h-16 w-full" /></li>)
             : data?.tasks.items.map((task,i)=><TaskItem task={task} key={`Task_${task.title}_${i}`}/>)}
         </ul>
         

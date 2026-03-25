@@ -1,7 +1,7 @@
 "use client";
 
 import { Card } from "@/components/ui/card";
-import Header from "./dashboard-header";
+import Header from "@/components/ui/header"
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp } from "lucide-react";
 
@@ -32,7 +32,7 @@ const RevenueForecast = () => {
           {data?.revenue.total}
         </span>
 
-        <Badge className="text-[var(--content-badge-up)] bg-[var(--bg-badge-up)] flex items-center gap-1">
+        <Badge className="text-[var(--content-badge-up)] bg-[var(--bg-badge-up)] flex items-center gap-1 rounded-md">
           <TrendingUp size={14} /> +{data?.revenue.trend}%
         </Badge>
 
@@ -51,7 +51,7 @@ const RevenueForecast = () => {
                 showThisYear ? "opacity-100" : "opacity-40"
                 }`}
             >
-                <span className="w-4 h-1.5 rounded-full bg-[var(--color-chart-1)]" />
+                <span className="w-4 h-1.5 rounded-full bg-[var(--chart-1)]" />
                 This Year
             </div>
 
@@ -61,12 +61,12 @@ const RevenueForecast = () => {
                 showLastYear ? "opacity-100" : "opacity-40"
                 }`}
             >
-                <span className="w-4 h-1.5 rounded-full bg-[var(--color-chart-2)]" />
+                <span className="w-4 h-1.5 rounded-full bg-[var(--chart-2)]" />
                 Last Year
             </div>
         </div>}
       {/* Chart */}
-      {loading? <Skeleton className="w-full h-50" /> : data && <div className="w-full h-[200px]">
+      {loading? <Skeleton className="w-full h-52" /> : data && <div className="w-full h-[200px]">
         <ResponsiveContainer width="100%" height="100%">
            <LineChart data={data?.revenue?.data}>
             <defs>
@@ -116,7 +116,7 @@ const RevenueForecast = () => {
             { showThisYear && <Line
               type="monotone"
               dataKey="thisYear"
-              stroke="var(--color-chart-1)"
+              stroke="var(--chart-1)"
               strokeWidth={2}
               dot={false}
               style={{ filter: "url(#lineShadow)" }}
@@ -126,7 +126,7 @@ const RevenueForecast = () => {
             {showLastYear && <Line
               type="monotone"
               dataKey="lastYear"
-              stroke="var(--color-chart-2)"
+              stroke="var(--chart-2)"
               strokeWidth={2}
               strokeDasharray="4 4"
               dot={false}

@@ -11,7 +11,6 @@
 //
 // Child components are kept presentational and do not handle data fetching.
 
-import Header from "./dashboard-header";
 import  DateFilterTabs  from "./date-filter-tabs"
 import  KPICards  from "./kpi-cards";
 import  RevenueForecast  from "./revenue-forecast";
@@ -20,26 +19,16 @@ import  PipelineSummary  from "./pipeline-summary";
 import  TasksPanel  from "./tasks-panel"
 import { useDashboard } from "@/hooks/use-dashboard";
 import { useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { CircleQuestionMark, Eclipse, Moon, Plus, Sun } from "lucide-react";
+import { CircleQuestionMark } from "lucide-react";
 import { useTheme } from "next-themes"
+import HeaderDashboard from "./dashboard-header";
 
 const DashbaordPage = ()=>{
     const { refetch } = useDashboard()
     useEffect(()=>{refetch()},[refetch])
-    const { theme, setTheme } = useTheme()
+    const { theme } = useTheme()
     return(<div className="space-y-5">
-        <div className="flex flex-col gap-5 tablet-md:flex-row justify-between">
-            <Header level={1} title="Dashborad" paragraph="Here's your pipeline health and sales activity at a glance." />
-            <div className="flex gap-2">
-                <Button className="">
-                    <Plus className="" size={15}/> <span className="-mt-1">Create</span>
-                </Button>
-                <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="">
-                    {theme === "dark" ? <Sun size={15} /> : <Moon size={15} /> } <span className="-mt-1">Theme</span>
-                </Button>
-            </div>
-        </div>
+        <HeaderDashboard/>
         <DateFilterTabs/>
         <KPICards/>
         <div className="grid grid-cols-3 gap-4">

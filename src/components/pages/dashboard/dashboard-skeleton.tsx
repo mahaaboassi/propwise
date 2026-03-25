@@ -10,7 +10,7 @@ export const Skeleton = ({ className }: SkeletonProps) => {
   return (
     <div
       className={cn(
-        "animate-pulse rounded-md bg-[var(--bg-muted)]",
+        "animate-pulse rounded-md bg-[var(--bg-emphasis)]",
         className
       )}
     />

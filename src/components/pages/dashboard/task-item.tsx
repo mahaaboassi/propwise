@@ -80,7 +80,7 @@ const TaskItem = ({ task }: Props) => {
       </FieldGroup>
 
       {/* Badge */}
-      <Badge className={`${priorityStyles[task.priority]} flex items-center gap-1`}>
+      <Badge className={`${priorityStyles[task.priority]} flex items-center gap-1 rounded-md`}>
         {task.priority}
       </Badge>
 

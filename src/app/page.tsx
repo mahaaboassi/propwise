@@ -10,9 +10,9 @@ export default function Home() {
         <div>
           <Image className="object-contain" width={150} height={100} alt="Logo" src="/logo.png" />
         </div>
-        <p className="font-medium text-center text-md mobile-md:text-xl">Welcome in our CRM Platform </p>
+        <p className="font-medium text-center text-base mobile-md:text-xl">Welcome in our CRM Platform </p>
         <Link className="flex-center" href={"/dashboard"}>
-          <Button className="cursor-pointer text-md p-5">Go to Your Dashboard</Button>
+          <Button className="cursor-pointer text-base p-5">Go to Your Dashboard</Button>
         </Link>
       </Card>
     </main>

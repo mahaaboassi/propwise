@@ -26,7 +26,7 @@ const KPICard = ({
     down: "text-[var(--content-badge-down)] bg-[var(--bg-badge-down)]",
   }
   return (
-    <div className="flex justify-between items-center bg-[var(--content-inverted)] rounded-xl shadow-[var(--drop-shadow)] p-4"> 
+    <div style={{ boxShadow: "var(--drop-shadow)" }} className="flex justify-between items-center bg-[var(--content-inverted)] rounded-xl p-4"> 
       {/* Left */}
       <div>
         <h2 className="text-sm text-[var(--content-subtle)]">{label}</h2>
@@ -46,7 +46,7 @@ const KPICard = ({
        <SparklineChart trendDirection={trendDirection} data={formattedData}/>
 
         {/* Badge */}
-          <Badge className={`${positionStyles[trendDirection]} flex items-center gap-1`}>
+          <Badge className={`${positionStyles[trendDirection]} flex items-center gap-1 rounded-md`}>
             {trendDirection === "down" ? <TrendingDown/>:<TrendingUp size={14} />} {trend}%
           </Badge>
       </div>

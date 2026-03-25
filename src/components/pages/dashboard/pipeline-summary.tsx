@@ -1,6 +1,6 @@
 "use client"
 import { Card } from "@/components/ui/card"
-import Header from "./dashboard-header"
+import Header from "@/components/ui/header"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { motion } from "framer-motion"
@@ -37,7 +37,7 @@ const PipelineSummary = () => {
       </div>
 
       <div className="flex flex-col gap-2">
-        { loading ? Array.from({ length: 4 }).map((_,i)=><Skeleton className="h-15 w-full" key={`Sketlon_Pipeline_${i}`}/>) :
+        { loading ? Array.from({ length: 4 }).map((_,i)=><Skeleton className="h-16 w-full" key={`Sketlon_Pipeline_${i}`}/>) :
          data?.pipeline.stages.map((stage, idx) => {
               const maxCount = Math.max(
                 ...data.pipeline.stages.map((s) => s.count)
