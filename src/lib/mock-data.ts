@@ -62,9 +62,9 @@ export const getMockDashboardData = (): DashboardData => {
       totalStages: 6,
       totalValue: `AED ${getRandom(1, 5)}M`,
       stages: [
-        { stage: "New Lead", count: getRandom(20, 80), value: getRandom(100000, 800000), currency: "AED" },
-        { stage: "Contacted", count: getRandom(20, 80), value: getRandom(100000, 800000), currency: "AED" },
-        { stage: "Qualified", count: getRandom(20, 80), value: getRandom(100000, 800000), currency: "AED" },
+        { stage: "New Lead", count: getRandom(20, 50), value: getRandom(100000, 800000), currency: "AED" },
+        { stage: "Contacted", count: getRandom(20, 50), value: getRandom(100000, 800000), currency: "AED" },
+        { stage: "Qualified", count: getRandom(20, 50), value: getRandom(100000, 800000), currency: "AED" },
         { stage: "Proposal", count: getRandom(10, 50), value: getRandom(100000, 500000), currency: "AED" },
         { stage: "Negotiation", count: getRandom(10, 40), value: getRandom(100000, 400000), currency: "AED" },
         { stage: "Closed Won", count: getRandom(5, 20), value: getRandom(50000, 200000), currency: "AED" },
