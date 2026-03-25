@@ -6,7 +6,8 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Field, FieldGroup } from "@/components/ui/field"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import { appToast } from "@/lib/toast"
 
 type Props = {
   task: Task
@@ -25,6 +26,29 @@ const TaskItem = ({ task }: Props) => {
     high: "text-[var(--content-badge-down)] bg-[var(--bg-badge-down)]",
   }
 
+  const changeValue = (val:boolean)=>{
+    if(val){
+      appToast.action({
+          message: "Task is completed.",
+          label: "Undo",
+          type: "success",
+          onAction: () => {
+          setIsChecked(false) 
+        }
+      })
+    }else{
+      appToast.action({
+          message: "Task marked as incomplete.",
+          label: "Undo",
+          type: "neutral",
+          onAction: () => {
+          setIsChecked(true) 
+        }
+      })
+    }
+    
+    setIsChecked(!!val)
+  }
   return (
     <li className="flex flex-col mobile-sm:flex-row mobile-md:flex-col desktop-sm:flex-row justify-between gap-2">
       
@@ -34,7 +58,7 @@ const TaskItem = ({ task }: Props) => {
           <Checkbox
             id={checkboxId}
             checked={isChecked}
-            onCheckedChange={(val) => setIsChecked(!!val)}
+            onCheckedChange={(val:boolean) => changeValue(val)}
             className="rounded-full"
           />
 

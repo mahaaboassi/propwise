@@ -21,10 +21,11 @@ import  TasksPanel  from "./tasks-panel"
 import { useDashboard } from "@/hooks/use-dashboard";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { CircleQuestionMark, Plus } from "lucide-react";
 const DashbaordPage = ()=>{
     const { refetch } = useDashboard()
     useEffect(()=>{refetch()},[refetch])
+    
     return(<div className="space-y-5">
         <div className="flex justify-between">
             <Header level={1} title="Dashborad" paragraph="Here's your pipeline health and sales activity at a glance." />
@@ -52,6 +53,9 @@ const DashbaordPage = ()=>{
             </div>
         </div>
         <div className="blur-div ">
+        </div>
+        <div className="fixed z-60 bottom-6 right-6 bg-[var(--stone-800)] text-[var(--content-inverted)] flex-center h-12 w-12 rounded-full cursor-pointer">
+            <CircleQuestionMark />
         </div>
     </div>)
 }

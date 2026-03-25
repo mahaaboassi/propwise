@@ -75,12 +75,22 @@
     --custom-border: #E1E4ED;
     --icon-color: #B4B9C9;
     --stone-500: #757575;
-
+    --stone-800: #2E2E2E;
+    --toast-border: #e0e0e02a;
+    /* Shadows */
     --drop-shadow: 0px 1px 0px 0px #1A1A1A00,
       0px 1px 0px 0px #CCCCCC66,
       0px -1px 0px 0px #00000012,
       0px -1px 0px 0px #00000008,
       1px 0px 0px 0px #00000008;
+    --shadow-xs: 0 2 2 0 #1F283705;
+    --shadow-sm: 0 0 1 0 #1F28373D,
+      0 2 2 0 #1F28370A,
+      0 5 5 0 #1F28370A;
+    --shadow-modal: 0 20 25 -5 #0000001A;
+    --shadow-modal: 0 2 6 -1 #00000014,
+      0 2 4 -1 #00000014;
+
 
     --bg-badge-up: #F0FDF4;
     --content-badge-up: #188540;
@@ -353,8 +363,21 @@
       backdrop-filter: blur(2px);
       -webkit-backdrop-filter: blur(2px);
     }
-
-
+    /* Toast Classes */
+    .cn-toast {
+        @apply !bg-[var(--bg-inverted)] !text-[var(--content-inverted)] !rounded-lg;
+      }
+    .cn-toast-error {
+        @apply !bg-[var(--bg-error)] !text-[var(--content-error)] !rounded-lg !border-[var(--toast-border)];
+      }
+    .cn-toast-error svg{
+      stroke: var(--content-emphasis);
+    }
+    .cn-toast [data-button][data-action]{
+      background: var(--bg-inverted) !important;
+      color: var(--content-inverted) !important;
+      outline: none !important;
+    }
   }
 /* sidebar-scroll */
 .sidebar-scroll::-webkit-scrollbar {

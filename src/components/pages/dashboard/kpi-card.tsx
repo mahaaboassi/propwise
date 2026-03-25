@@ -64,7 +64,7 @@ const KPICard = ({
 
         {/* Badge */}
           <Badge className={`${positionStyles[trendDirection]} flex items-center gap-1`}>
-            <TrendingUp size={14} /> +{trend}%
+            {trendDirection === "down" ? <TrendingDown/>:<TrendingUp size={14} />} +{trend}%
           </Badge>
       </div>
     </div>

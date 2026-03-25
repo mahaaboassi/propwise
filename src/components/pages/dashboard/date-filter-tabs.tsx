@@ -1,7 +1,10 @@
 "use client"
 
 import { useDashboard } from "@/hooks/use-dashboard"
+import { appToast } from "@/lib/toast"
+import { X } from "lucide-react"
 import { useState } from "react"
+
 type Date = {
     label: string,
     value: "today" | "this_week" | "this_month" | "this_quarter" | "this_year" | "custom"
@@ -19,6 +22,12 @@ const DateFilterTabs = ()=>{
     const change = (index:number,date:Date)=>{
         setCurrentDate(index)
         changePeriod(date.value)
+        appToast.neutral("Fetching data Successfully.",{
+            action:{
+                label: <X className="size-4" />,
+                onClick: ()=>{}
+            }
+        })
     }
     return<div>
         <ul className="flex gap-2 p-1.5 h-[50px] bg-[var(--bg-subtle)] whitespace-nowrap overflow-x-auto w-full  rounded-xl mobile-md:w-fit text-xs mobile-md:text-sm tablet-md:text-base font-normal text-[#9CA3AF]">
