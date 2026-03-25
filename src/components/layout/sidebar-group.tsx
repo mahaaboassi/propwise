@@ -28,7 +28,6 @@ const SidebarGroup = ({ item, pathname, openItems, toggleItem }: SidebarGroupPro
         const isActive = pathname === child.link
         const hasChildren = child.children && child.children?.length > 0
         const isChildOpen = openItems[child.name]
-
         return (
           <Collapsible
             key={`${child.name}_Child_Sidebar`}
