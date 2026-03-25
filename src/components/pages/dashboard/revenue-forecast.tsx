@@ -66,9 +66,9 @@ const RevenueForecast = () => {
             </div>
         </div>}
       {/* Chart */}
-      {loading? <Skeleton className="w-full h-50" /> : <div className="w-full h-[200px]">
+      {loading? <Skeleton className="w-full h-50" /> : data && <div className="w-full h-[200px]">
         <ResponsiveContainer width="100%" height="100%">
-          {data && <LineChart data={data.revenue.data}>
+           <LineChart data={data?.revenue?.data}>
             <defs>
             <filter id="lineShadow" x="-0.5%" y="0%" width="200%" height="300%">
                 <feDropShadow 
@@ -131,7 +131,7 @@ const RevenueForecast = () => {
               strokeDasharray="4 4"
               dot={false}
             />}
-          </LineChart>}
+          </LineChart>
         </ResponsiveContainer>
       </div>}
     </Card>

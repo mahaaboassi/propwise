@@ -1,68 +1,73 @@
 import { Sidebar } from "@/types/dashboard";
 import { DashboardData } from "./mock-api";
 
-export const DashboardDataMock = {
+type TrendDirection = "up" | "down";
+
+const getRandom = (min: number, max: number) =>
+  Math.floor(Math.random() * (max - min + 1)) + min;
+
+const getTrend = (current: number, previous: number): {
+    trend: number;
+    trendDirection: TrendDirection;
+  } => {
+    console.log(current , previous);
+    
+  return {
+    trend: Number((((current - previous) / previous) * 100).toFixed(1)),
+    trendDirection: current >= previous ? "up" : "down",
+  };
+};
+
+export const getMockDashboardData = (): DashboardData => {
+  // const baseRevenue = getRandom(100, 300);
+  // console.log("here", baseRevenue, period);
+
+
+  const revenueData = Array.from({ length: 12 }, (_, i) => ({
+    month: `M${i + 1}`,
+    thisYear: getRandom(0, 240),
+    lastYear: getRandom(0, 240),
+  }));
+
+  const makeKpi = (label: string, min: number, max: number) => {
+    const current = getRandom(min, max);
+    const previous = getRandom(min, max);
+
+    const { trend, trendDirection } = getTrend(current, previous);
+
+    return {
+      label,
+      value: `${current}`,
+      trend,
+      trendDirection,
+      sparklineData: Array.from({ length: 7 }, () => getRandom(min, max)),
+    };
+  };
+  return {
     kpis: [
-      {
-        label: "Total Leads",
-        value: "248",
-        trend: 12.4,
-        trendDirection: "up",
-        sparklineData: [10, 20, 15, 30, 25, 40, 35],
-      },
-      {
-        label: "Revenue YTD",
-        value: "AED 1.42M",
-        trend: 24.6,
-        trendDirection: "up",
-        sparklineData: [20, 25, 30, 28, 35, 50, 60],
-      },
-      {
-        label: "Active Deals",
-        value: "43",
-        trend: 8.2,
-        trendDirection: "up",
-        sparklineData: [5, 10, 8, 15, 12, 18, 20],
-      },
-      {
-        label: "Completed Tasks",
-        value: "156",
-        trend: 24.6,
-        trendDirection: "up",
-        sparklineData: [30, 40, 35, 50, 45, 60, 70],
-      },
+      makeKpi("Total Leads", 0, 50),
+      makeKpi("Revenue YTD", 0, 1000),
+      makeKpi("Active Deals", 0, 50),
+      makeKpi("Completed Tasks", 0, 50),
     ],
 
     revenue: {
-      total: "AED 1,621,000",
-      trend: 24.6,
-      data: [
-          { month: "Jan", thisYear: 80, lastYear: 90 },
-          { month: "Feb", thisYear: 85, lastYear: 110 },
-          { month: "Mar", thisYear: 90, lastYear: 130 },
-          { month: "Apr", thisYear: 100, lastYear: 140 },
-          { month: "May", thisYear: 150, lastYear: 170 },
-          { month: "Jun", thisYear: 175, lastYear: 180 },
-          { month: "Jul", thisYear: 180, lastYear: 190 },
-          { month: "Aug", thisYear: 190, lastYear: 200 },
-          { month: "Sep", thisYear: 205, lastYear: 210 },
-          { month: "Oct", thisYear: 200, lastYear: 225 },
-          { month: "Nov", thisYear: 215, lastYear: 230 },
-          { month: "Dec", thisYear: 230, lastYear: 240 },
-      ],
+      total: `AED ${getRandom(500, 2000)}K`,
+      trend: getRandom(5, 40),
+      data: revenueData,
     },
 
     pipeline: {
-      totalDeals: 113,
+      totalDeals: getRandom(50, 200),
       totalStages: 6,
-      totalValue: "AED 2.75M",
+      totalValue: `AED ${getRandom(1, 5)}M`,
       stages: [
-        { stage: "New Lead", count: 50, value: 840000, currency: "AED" },
-        { stage: "Contacted", count: 42, value: 560000, currency: "AED" },
-        { stage: "Qualified", count: 28, value: 450000, currency: "AED" },
-        { stage: "Proposal", count: 18, value: 450000, currency: "AED" },
-        { stage: "Negotiation", count: 12, value: 300000, currency: "AED" },
-        { stage: "Closed Won", count: 8, value: 200000, currency: "AED" },
+        { stage: "New Lead", count: getRandom(20, 80), value: getRandom(100000, 800000), currency: "AED" },
+        { stage: "Contacted", count: getRandom(20, 80), value: getRandom(100000, 800000), currency: "AED" },
+        { stage: "Qualified", count: getRandom(20, 80), value: getRandom(100000, 800000), currency: "AED" },
+        { stage: "Proposal", count: getRandom(10, 50), value: getRandom(100000, 500000), currency: "AED" },
+        { stage: "Negotiation", count: getRandom(10, 40), value: getRandom(100000, 400000), currency: "AED" },
+        { stage: "Closed Won", count: getRandom(5, 20), value: getRandom(50000, 200000), currency: "AED" },
       ],
     },
 
@@ -105,9 +110,9 @@ export const DashboardDataMock = {
     },
 
     tasks: {
-      completed: 2,
-      total: 5,
-      items: [
+      completed: getRandom(1, 5),
+      total: getRandom(5, 10),
+       items: [
         {
           id: "1",
           title: "Update deal #1024 documents",
@@ -155,9 +160,8 @@ export const DashboardDataMock = {
         },
       ],
     },
-  } satisfies DashboardData;
-
-
+  };
+};
 
 export const sidebarData: Sidebar[] = [
   {

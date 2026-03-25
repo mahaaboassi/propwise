@@ -8,9 +8,9 @@ export default function Home() {
     <main className="h-screen flex-center-col gap-2 mobile-md:gap-5">
       <Card className="p-5 mobile-md:p-10 flex-center-col bg-[var(--content-inverted)]">
         <div>
-          <Image className="object-contain" width={150} height={100} alt="Logo" src="/images/logo.png" />
+          <Image className="object-contain" width={150} height={100} alt="Logo" src="/logo.png" />
         </div>
-        <p className="font-medium text-center text-md mobile-md:text-xl">Welcome in our Saas Platform </p>
+        <p className="font-medium text-center text-md mobile-md:text-xl">Welcome in our CRM Platform </p>
         <Link className="flex-center" href={"/dashboard"}>
           <Button className="cursor-pointer text-md p-5">Go to Your Dashboard</Button>
         </Link>

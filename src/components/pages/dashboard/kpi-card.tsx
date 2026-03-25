@@ -2,7 +2,12 @@
 import { Badge } from "@/components/ui/badge";
 import { DashboardKPI } from "@/lib/mock-api";
 import { TrendingDown, TrendingUp } from "lucide-react";
-import { LineChart, Line, ResponsiveContainer } from "recharts";
+import SparklineChart from "./sparkline-chart";
+import Counter from "@/components/ui/counter";
+type FormattedData = {
+        name: number,
+        value: number
+    }[]
 
 const KPICard = ({
   label,
@@ -12,7 +17,7 @@ const KPICard = ({
   sparklineData,
 }: DashboardKPI) => {
 
-  const formattedData = sparklineData.map((value, index) => ({
+  const formattedData: FormattedData = sparklineData.map((value, index) => ({
     name: index,
     value,
   }));
@@ -25,46 +30,24 @@ const KPICard = ({
       {/* Left */}
       <div>
         <h2 className="text-sm text-[var(--content-subtle)]">{label}</h2>
-        <span className="text-[var(--content-emphasis)] font-bold text-lg desktop-sm:text-xl">
-          {value}
-        </span>
+        {/* Counter for Values */}
+        <div className="text-[var(--content-emphasis)] font-bold text-lg desktop-sm:text-xl">
+          <Counter
+            value={Number(value)}
+            prefix={label === "Revenue YTD" ? "AED " : ""}
+          />
+        </div>
       </div>
 
       {/* Right */}
       <div className="flex flex-col items-end gap-2">
 
         {/* Sparkline */}
-        <ResponsiveContainer width={100} height={40}>
-          <LineChart data={formattedData}>
-            <defs>
-            <filter id="lineShadowSpark" x="0%" y="-10%" width="140%" height="140%">
-                <feDropShadow 
-                dx="0" 
-                dy="8" 
-                stdDeviation="6" 
-                floodColor="#000" 
-                floodOpacity="0.3" 
-                />
-            </filter>
-            </defs>
-            <Line
-              type="monotone"
-              dataKey="value"
-              stroke={
-                trendDirection === "up"
-                  ? "var(--content-badge-up)"
-                  : "var(--content-badge-down)"
-              }
-              strokeWidth={2}
-              dot={false}
-              style={{ filter: "url(#lineShadowSpark)" }}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+       <SparklineChart trendDirection={trendDirection} data={formattedData}/>
 
         {/* Badge */}
           <Badge className={`${positionStyles[trendDirection]} flex items-center gap-1`}>
-            {trendDirection === "down" ? <TrendingDown/>:<TrendingUp size={14} />} +{trend}%
+            {trendDirection === "down" ? <TrendingDown/>:<TrendingUp size={14} />} {trend}%
           </Badge>
       </div>
     </div>

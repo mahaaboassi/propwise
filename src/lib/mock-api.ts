@@ -1,5 +1,11 @@
-import { DashboardDataMock } from "./mock-data";
-
+import { getMockDashboardData } from "./mock-data";
+type Period =
+  | "today"
+  | "this_week"
+  | "this_month"
+  | "this_quarter"
+  | "this_year"
+  | "custom";
 export interface DashboardKPI {
     label: string;
     value: string;
@@ -43,10 +49,10 @@ export interface DashboardData {
     tasks: { completed: number; total: number; items: Task[] };
 }
 export async function fetchDashboardData(params: {
-    period: 'today' | 'this_week' | 'this_month' | 'this_quarter' | 'this_year' | 'custom';
+    period: Period;
     }): Promise<DashboardData> {
     await new Promise((resolve) => setTimeout(resolve, 300 + Math.random() * 500));
     // Return mock data matching the Figma design values
     console.log("params",params)
-    return DashboardDataMock
+    return getMockDashboardData()
 }
