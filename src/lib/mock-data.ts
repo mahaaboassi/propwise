@@ -1,4 +1,4 @@
-import { Sidebar } from "@/types/dashboard";
+import { Menu, SidebarTypes } from "@/types/dashboard";
 import { DashboardData } from "./mock-api";
 
 type TrendDirection = "up" | "down";
@@ -327,7 +327,7 @@ export const getMockDashboardData = (period: Period): DashboardData => {
   };
 };
 
-export const sidebarData: Sidebar[] = [
+export const sidebarData: SidebarTypes[] = [
   {
     name: "Dashboard",
     key: "dashboard",
@@ -380,3 +380,26 @@ export const sidebarData: Sidebar[] = [
     children: [],
   },
 ];
+export const menuAvatar: Menu[] = [
+  {
+    name: "My Profile",
+    key: "my-profile",
+    link: "/profile",
+    icon: "profile",
+    badge: "",
+  },
+  {
+    name: "Notifications",
+    key: "notifications",
+    link: "/notifications",
+    icon: "notifications",
+    badge: "2",
+  },
+  {
+    name: "Help & Support",
+    key: "help",
+    link: "/help",
+    icon: "help",
+    badge: "",
+  },
+]

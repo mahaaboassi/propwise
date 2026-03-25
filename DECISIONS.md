@@ -30,13 +30,15 @@ src/
 │   │   ├── separator.tsx
 │   │   ├── skeleton.tsx
 │   │   ├── sonner.tsx
-│   │   └── toast.tsx       → Custom toast component supporting multiple actions (undo, retry)
+│   │   └── toast.tsx           → Custom toast component supporting multiple actions (undo, retry)
 │   │
 │   ├── layout/
-│   │   └── sidebar.tsx     → Sidebar navigation component
-│   │
+│   │   └── sidebar.tsx         → Main sidebar container (layout + state control)
+│   │   └── sidebar-group.tsx   → Top section (user info, search, actions)
+│   │   └── sidebar-header.tsx  → Grouped navigation (collapsible sections)
+│   │   └── sidebar-item.tsx    → Individual navigation link (single item)
 │   ├── pages/
-│   │   └── dashboard/      → Dashboard feature components
+│   │   └── dashboard/                 → Dashboard feature components
 │   │       ├── index.tsx              → Feature entry point (data orchestration + composition)
 │   │       ├── dashboard-header.tsx
 │   │       ├── date-filter-tabs.tsx
@@ -75,3 +77,13 @@ src/
 │
 └── hooks/
     └── use-dashboard.ts    → Custom hook to manage period state and fetch dashboard data
+
+## 🎨 Design System Notes
+
+- All colors, typography, spacing, and shadows were implemented based on the Figma design system.
+
+- In cases where certain colors were provided in the design without clear semantic naming (e.g., not mapped to explicit tokens such as "primary", "success", etc.), I extracted the exact values from Figma and mapped them to internal semantic tokens.
+
+- These tokens were then used consistently across the application to maintain design consistency and avoid hardcoded values.
+
+- No arbitrary or approximate colors were introduced; all values originate directly from the Figma design.

@@ -3,24 +3,13 @@
 import { usePathname } from "next/navigation"
 import { useState } from "react"
 import { sidebarData } from "@/lib/mock-data"
-import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar"
-import { Badge } from "../ui/badge"
-import { Input } from "../ui/input"
-import { iconMap, IconName } from "../icons/icon-map"
-import {
-  ChevronRight,
-  ChevronsUpDown,
-  Command,
-  Search,
-  TextAlignJustify,
-  X,
-} from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+
+import SidebarHeader from "./sidebar-header"
+import SidebarItem from "./sidebar-item"
+import SidebarGroup from "./sidebar-group"
+import { X } from "lucide-react"
+import { SidebarTypes } from "@/types/dashboard"
 
 const Sidebar = () => {
   const pathname = usePathname()
@@ -38,63 +27,7 @@ const Sidebar = () => {
   return (
     <nav className="flex flex-col gap-4 tablet-md:w-[224px] tablet-md:sticky top-5">
       {/* Top Bar */}
-      <div className="fixed z-50 left-0 right-0 top-0 p-4 shadow bg-[var(--content-inverted)] flex items-center gap-4 
-                      tablet-md:shadow-none tablet-md:bg-background tablet-md:p-0 tablet-md:items-start tablet-md:static tablet-md:flex-col">
-
-        {/* Avatar */}
-        <div className="flex gap-3 items-center w-full">
-          <div className="relative">
-            <Avatar className="w-11 h-11">
-              <AvatarImage src="/images/image.jpg" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-
-            <div className="absolute -right-2 bottom-0">
-              <Avatar className="w-6 h-6">
-                <AvatarImage src="/images/company-logo.png" />
-              </Avatar>
-            </div>
-          </div>
-
-          <div className="flex justify-between items-center w-full">
-            <div>
-              <h2 className="text-[var(--content-default)] text-base font-medium">
-                Lina Rahman
-              </h2>
-              <p className="flex items-center gap-1 text-xs text-[#687287]">
-                Atlas Estates
-                <Badge className="bg-[var(--bg-info)] text-xs text-[var(--content-info)] rounded-md">
-                  Pro
-                </Badge>
-              </p>
-            </div>
-
-            <div className="hidden tablet-md:flex text-[var(--icon-color)]">
-              <ChevronsUpDown size={15} />
-            </div>
-          </div>
-        </div>
-
-        {/* Search */}
-        <div className="relative hidden tablet-md:flex w-full">
-          <Search className="center-vertical !left-1.5 text-[var(--icon-color)]" size={20} />
-          <Input  placeholder="Search" />
-          <div className="flex gap-1 items-center text-[var(--icon-color)] right-1.5 center-vertical">
-            <div className="icon-cover flex-center"><Command size={15} /></div>
-            <div className="icon-cover flex-center">K</div>
-          </div>
-        </div>
-
-        {/* Mobile Buttons */}
-        <div className="flex tablet-md:hidden gap-1">
-          <div onClick={() => setOpenMenuSmallSize(true)} className="icon-cover flex-center">
-            <TextAlignJustify />
-          </div>
-          <div className="icon-cover flex-center">
-            <Search />
-          </div>
-        </div>
-      </div>
+      <SidebarHeader onClick={()=>setOpenMenuSmallSize(true)}/>
 
       {/* Sidebar */}
       <AnimatePresence>
@@ -116,75 +49,25 @@ const Sidebar = () => {
             )}
 
             {/* Menu */}
-            {sidebarData.map((sideItem, idx) => {
-              const Icon = sideItem.icon ? iconMap[sideItem.icon as IconName] : null
-              const isActive = pathname === sideItem.link
-
-              return (
-                <div key={idx}>
-                  {/* Single Item */}
-                  {sideItem.children.length === 0 ? (
-                    <div className={`${sideItem.key == "team"?"tablet-md:fixed z-50 tablet-md:bg-background bg-[var(--content-inverted)]  bottom-20 w-[224px]":(sideItem.key == "settings"?"tablet-md:fixed z-50 tablet-md:bg-background bg-[var(--content-inverted)] bottom-10 w-[224px]":"")} item-menu flex gap-2 items-center pl-4 ${isActive ? "active" : ""}`}>
-                      {Icon && <Icon className="icon-menu" />}
-                      {sideItem.name}
-                    </div>
+              <div className="flex flex-col gap-1">
+                {sidebarData.map((item: SidebarTypes) =>
+                  item.children.length === 0 ? (
+                    <SidebarItem
+                      key={item.key}
+                      item={item}
+                      pathname={pathname}
+                    />
                   ) : (
-                    <div className="mb-2">
-                      <div className="text-[var(--content-subtle)] px-2 mb-2">
-                        {sideItem.name}
-                      </div>
-                      {sideItem.children.map((child, i) => {
-                        const ChildIcon = child.icon ? iconMap[child.icon as IconName] : null
-                        const isActive = pathname === child.link
-                        const hasChildren = child.children && child.children?.length > 0
-                        const isOpen = openItems[child.name] || false
-                        return (
-                          <Collapsible
-                            key={i}
-                            open={isOpen}
-                            onOpenChange={() => toggleItem(child.name)}
-                          >
-                            <CollapsibleTrigger asChild>
-                              <div className={`item-menu flex justify-between items-center pl-4 ${isActive ? "active" : ""}`}>
-                                <div className="flex gap-2 items-center">
-                                  {ChildIcon && <ChildIcon className="icon-menu" />}
-                                  <span>{child.name}</span>
-                                </div>
-
-                                {hasChildren && (
-                                  <ChevronRight
-                                    size={15}
-                                    className={`transition-transform ${isOpen ? "rotate-90" : ""}`}
-                                  />
-                                )}
-                              </div>
-                            </CollapsibleTrigger>
-
-                            {hasChildren && child.children && (
-                              <CollapsibleContent className="ml-6 flex flex-col gap-1 mt-1">
-                                {child.children.map((sub, j) => {
-                                  const isSubActive = pathname === sub.link
-                                  // const CollapseIcon = sub.icon ? iconMap[sub.icon as IconName] : null
-                                  return (
-                                    <div
-                                      key={j}
-                                      className={`item-menu text-sm ${isSubActive ? "active" : ""} flex items-center gap-1`}
-                                    >
-                                      {/* {CollapseIcon && <CollapseIcon className="icon-menu" />} */}
-                                      {sub.name}
-                                    </div>
-                                  )
-                                })}
-                              </CollapsibleContent>
-                            )}
-                          </Collapsible>
-                        )
-                      })}
-                    </div>
-                  )}
-                </div>
-              )
-            })}
+                    <SidebarGroup
+                      key={item.key}
+                      item={item}
+                      pathname={pathname}
+                      openItems={openItems}
+                      toggleItem={toggleItem}
+                    />
+                  )
+                )}
+              </div>
           </motion.div>
         )}
       </AnimatePresence>
