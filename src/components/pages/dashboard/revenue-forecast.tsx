@@ -23,7 +23,7 @@ const RevenueForecast = () => {
     const [showLastYear, setShowLastYear] = useState(false);
     const { loading, data } = useDashboard()
   return (
-    <Card className="bg-[var(--bg-surface)] p-4 !gap-4">
+    <Card className="bg-[var(--content-inverted)] p-4 !gap-4">
       <Header level={2} title="Revenue Forecast" className="!text-[var(--content-grey)]" />
 
       {/* Top Section */}

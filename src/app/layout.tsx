@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Figtree } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
-
+import { ThemeProvider } from "next-themes"
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -32,8 +32,11 @@ export default function RootLayout({
       className={`${inter.variable} ${figtree.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        {children}
-        <Toaster/>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+          <Toaster/>
+        </ThemeProvider>
+
       </body>
     </html>
   );

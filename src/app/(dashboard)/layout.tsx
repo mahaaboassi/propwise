@@ -11,7 +11,7 @@ export default function DashboardLayout({
   return (
     <>
       <main className="flex p-2 mobile-md:p-5">
-        <div className="relative">
+        <div className="relative ">
           <Sidebar />
         </div>
 

@@ -9,7 +9,7 @@ import { motion } from "framer-motion"
 
 const TasksPanel = ()=>{
     const { loading, data } = useDashboard()
-    return(<Card className="bg-[var(--bg-surface)] !gap-4">
+    return(<Card className="bg-[var(--content-inverted)] !gap-4">
         <div className="p-4 border-b-2 border-[var(--border-default)] flex flex-col gap-2">
             <div className="flex gap-2 flex-col desktop-sm:flex-row desktop-sm:items-center justify-between w-full ">
                 <Header

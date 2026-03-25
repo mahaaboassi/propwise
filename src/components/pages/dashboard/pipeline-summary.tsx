@@ -17,7 +17,7 @@ const PipelineSummary = () => {
   const { loading, data } = useDashboard()
 
   return (
-    <Card className="bg-[var(--bg-surface)] p-4 !gap-4">
+    <Card className="bg-[var(--content-inverted)] p-4 !gap-4">
 
       <div className="flex gap-2 flex-col desktop-sm:flex-row justify-between w-full">
         <Header

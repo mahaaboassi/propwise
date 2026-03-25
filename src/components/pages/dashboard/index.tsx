@@ -21,19 +21,25 @@ import  TasksPanel  from "./tasks-panel"
 import { useDashboard } from "@/hooks/use-dashboard";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { CircleQuestionMark, Plus } from "lucide-react";
+import { CircleQuestionMark, Eclipse, Moon, Plus, Sun } from "lucide-react";
+import { useTheme } from "next-themes"
+
 const DashbaordPage = ()=>{
     const { refetch } = useDashboard()
     useEffect(()=>{refetch()},[refetch])
-    
+    const { theme, setTheme } = useTheme()
     return(<div className="space-y-5">
-        <div className="flex justify-between">
+        <div className="flex flex-col gap-5 tablet-md:flex-row justify-between">
             <Header level={1} title="Dashborad" paragraph="Here's your pipeline health and sales activity at a glance." />
-            <Button className="">
-                <Plus className="" size={15}/> <span className="-mt-1">Create</span>
-            </Button>
+            <div className="flex gap-2">
+                <Button className="">
+                    <Plus className="" size={15}/> <span className="-mt-1">Create</span>
+                </Button>
+                <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="">
+                    {theme === "dark" ? <Sun size={15} /> : <Moon size={15} /> } <span className="-mt-1">Theme</span>
+                </Button>
+            </div>
         </div>
-        
         <DateFilterTabs/>
         <KPICards/>
         <div className="grid grid-cols-3 gap-4">
@@ -52,9 +58,9 @@ const DashbaordPage = ()=>{
                 <TasksPanel/>
             </div>
         </div>
-        <div className="blur-div ">
+        <div className={theme === "dark" ? "blur-dark" : "blur-div"}>
         </div>
-        <div className="fixed z-60 bottom-6 right-6 bg-[var(--stone-800)] text-[var(--content-inverted)] flex-center h-12 w-12 rounded-full cursor-pointer">
+        <div className={`fixed z-60 bottom-6 right-6 bg-[var(--content-emphasis)] text-[var(--content-inverted)] flex-center h-12 w-12 rounded-full cursor-pointer`}>
             <CircleQuestionMark />
         </div>
     </div>)

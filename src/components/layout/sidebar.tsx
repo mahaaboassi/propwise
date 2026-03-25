@@ -38,7 +38,7 @@ const Sidebar = () => {
   return (
     <aside className="flex flex-col gap-4 tablet-md:w-[224px] tablet-md:sticky top-5">
       {/* Top Bar */}
-      <div className="fixed z-50 left-0 right-0 top-0 p-4 shadow bg-[var(--bg-surface)] flex items-center gap-4 
+      <div className="fixed z-50 left-0 right-0 top-0 p-4 shadow bg-[var(--content-inverted)] flex items-center gap-4 
                       tablet-md:shadow-none tablet-md:bg-background tablet-md:p-0 tablet-md:items-start tablet-md:static tablet-md:flex-col">
 
         {/* Avatar */}
@@ -76,9 +76,9 @@ const Sidebar = () => {
         </div>
 
         {/* Search */}
-        <div className="relative hidden tablet-md:flex">
+        <div className="relative hidden tablet-md:flex w-full">
           <Search className="center-vertical !left-1.5 text-[var(--icon-color)]" size={20} />
-          <Input placeholder="Search" />
+          <Input  placeholder="Search" />
           <div className="flex gap-1 items-center text-[var(--icon-color)] right-1.5 center-vertical">
             <div className="icon-cover flex-center"><Command size={15} /></div>
             <div className="icon-cover flex-center">K</div>
@@ -105,7 +105,7 @@ const Sidebar = () => {
             exit={{ width: 0 }}
             transition={{ duration: 0.3,   }}
             className={`sidebar-scroll overflow-y-auto h-screen tablet-md:h-[calc(100vh-250px)] flex-col tablet-md:!w-[224px] w-full gap-1 text-md font-normal
-            ${openMenuSmallSize ? "fixed top-0 px-4 bottom-0 right-0 overflow-hidden bg-[var(--bg-surface)] shadow z-50 pt-5 pl-4" : "hidden  tablet-md:flex"}`}
+            ${openMenuSmallSize ? "fixed top-0 px-4 bottom-0 right-0 overflow-hidden bg-[var(--content-inverted)] shadow z-50 pt-5 pl-4" : "hidden  tablet-md:flex"}`}
           >
 
             {/* Close */}
@@ -124,7 +124,7 @@ const Sidebar = () => {
                 <div key={idx}>
                   {/* Single Item */}
                   {sideItem.children.length === 0 ? (
-                    <div className={`${sideItem.key == "team"?"tablet-md:fixed z-500 bg-background bottom-20 w-[224px]":(sideItem.key == "settings"?"tablet-md:fixed z-500 bg-background bottom-10 w-[224px]":"")} item-menu flex gap-2 items-center pl-4 ${isActive ? "active" : ""}`}>
+                    <div className={`${sideItem.key == "team"?"tablet-md:fixed z-50 tablet-md:bg-background bg-[var(--content-inverted)]  bottom-20 w-[224px]":(sideItem.key == "settings"?"tablet-md:fixed z-50 tablet-md:bg-background bg-[var(--content-inverted)] bottom-10 w-[224px]":"")} item-menu flex gap-2 items-center pl-4 ${isActive ? "active" : ""}`}>
                       {Icon && <Icon className="icon-menu" />}
                       {sideItem.name}
                     </div>

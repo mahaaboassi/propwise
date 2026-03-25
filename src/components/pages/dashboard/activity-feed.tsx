@@ -9,7 +9,7 @@ import Skeleton from "./dashboard-skeleton"
 
 const ActivityFeed = ()=>{
     const { loading, data } = useDashboard()
-    return(<Card className="bg-[var(--bg-surface)] py-4 !gap-0">
+    return(<Card className="bg-[var(--content-inverted)] py-4 !gap-0">
         <div className="px-4">
             <Header level={2} title="Activity Feed" />
         </div>
