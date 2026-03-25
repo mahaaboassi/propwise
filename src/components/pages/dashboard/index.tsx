@@ -22,6 +22,7 @@ import { useEffect } from "react";
 import { CircleQuestionMark } from "lucide-react";
 import { useTheme } from "next-themes"
 import HeaderDashboard from "./dashboard-header";
+import { Suspense } from "react"
 
 const DashbaordPage = ()=>{
     const { refetch } = useDashboard()
@@ -29,7 +30,11 @@ const DashbaordPage = ()=>{
     const { theme } = useTheme()
     return(<div className="space-y-5">
         <HeaderDashboard/>
-        <DateFilterTabs/>
+        
+        <Suspense fallback={null}>
+            <DateFilterTabs />
+        </Suspense>
+        
         <KPICards/>
         <div className="grid grid-cols-3 gap-4">
             <div className="col-span-3 mobile-md:col-span-2">
