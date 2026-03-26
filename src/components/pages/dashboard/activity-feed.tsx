@@ -6,9 +6,72 @@ import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { useDashboard } from "@/hooks/use-dashboard"
 import Skeleton from "./dashboard-skeleton"
+import { useEffect, useState } from "react"
+import { ActivityEntry } from "@/lib/mock-api"
+import { getRandom, randomEntries } from "@/lib/mock-data"
 
 const ActivityFeed = ()=>{
     const { loading, data } = useDashboard()
+
+    const [ activities, setActivities] = useState<
+    { label: string; entries: ActivityEntry[] }[]
+    >(data?.activities.groups || [])
+
+    useEffect(()=>{
+        // Wait until data be not null
+        setTimeout(()=>{
+            if (data?.activities.groups) {
+            setActivities(data.activities.groups)
+            }
+        },500)
+    },[data])
+    // Activity feed auto-refresh with simulated real-time updates 
+    useEffect(() => {
+        const interval = setInterval(() => {
+        setActivities((prev)  => {
+        if (!prev) return prev
+        const numberRandom = getRandom(0,4)
+        const newEntry : ActivityEntry = {
+            id: Date.now().toLocaleString(),
+            message: randomEntries[numberRandom].msg,
+            highlights: [{ text: randomEntries[numberRandom].name, type: "person" }],
+            timestamp: "Just now",
+            relativeTime: "now",
+            icon: randomEntries[numberRandom].icon ,
+        }
+
+        return prev.map((group, index) => {
+            if (index === 0) {
+            return {
+                ...group,
+                entries: [newEntry, ...group.entries].slice(0, 3), // limit
+            }
+            }
+
+            return group
+        })
+        })
+    }, 10000)
+
+    return () => clearInterval(interval)
+    }, [])
+    
+    if(activities.length==0 || !data?.activities.groups) return(<Card className="bg-[var(--content-inverted)] py-4 !gap-0">
+        <div className="px-4">
+            <Header level={2} title="Activity Feed" />
+        </div>
+        <div>
+            {<div className="flex flex-col gap-3 p-4">
+                {Array.from({ length: 3 }).map((_,i)=><Skeleton className="h-20 w-full" key={`Sketlon_Activity_${i}`}/>)}
+            </div> }
+        </div>
+        <div>
+            <Link href={"#"} className="link flex-center w-full px-4 gap-2 pt-4 ">
+            View full activity log <ArrowUpRight size={17} />
+            </Link>
+        </div>
+    </Card>)
+
     return(<Card className="bg-[var(--content-inverted)] py-4 !gap-0">
         <div className="px-4">
             <Header level={2} title="Activity Feed" />
@@ -16,7 +79,7 @@ const ActivityFeed = ()=>{
         <div>
             {loading? <div className="flex flex-col gap-3 p-4">
                 {Array.from({ length: 3 }).map((_,i)=><Skeleton className="h-20 w-full" key={`Sketlon_Activity_${i}`}/>)}
-            </div> : data?.activities.groups.map((group,idx)=>(<div key={`Activity_Group_${group.label}_${idx}`} >
+            </div> : activities.length>0 && activities.map((group,idx)=>(<div key={`Activity_Group_${group.label}_${idx}`} >
                 <h3 className="bg-[var(--border-muted)] border-t border-b border-[var(--border-default)] px-4 py-2 text-xs desktop-sm:text-sm text-[var(--content-subtle)] uppercase font-medium mt-4">{group.label}</h3>
                 <div className="px-4">
                     <ul className="border-l-2 border-[var(--border-default)] flex flex-col gap-3 pt-4">

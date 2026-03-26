@@ -10,7 +10,13 @@ type Period =
   | "this_year"
   | "custom";
 
-const getRandom = (min: number, max: number) =>
+type PropsRandomValues= {
+    name: string,
+    msg: string,
+    icon: 'lead' | 'deal' | 'call' | 'email' | 'note' | 'task' | 'commission'
+}
+
+export const getRandom = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
 const getTrend = (current: number, previous: number): {
@@ -401,5 +407,38 @@ export const menuAvatar: Menu[] = [
     link: "/help",
     icon: "help",
     badge: "",
+  },
+]
+// Random Fake Activity Entry to Add it to Feed
+export const randomEntries: PropsRandomValues[] = [
+  {
+    name: "Maha Abo Assi",
+    msg: "You were assigned a new lead:",
+    icon: "lead",
+  },
+  {
+    name: "John Smith",
+    msg: "New deal was created:",
+    icon: "deal",
+  },
+  {
+    name: "Sara Ali",
+    msg: "You received a call from:",
+    icon: "call",
+  },
+  {
+    name: "Ahmed Hassan",
+    msg: "New email received from:",
+    icon: "email",
+  },
+  {
+    name: "Lina Khaled",
+    msg: "Task was completed by:",
+    icon: "task",
+  },
+  {
+    name: "Omar Nasser",
+    msg: "Commission updated for:",
+    icon: "commission",
   },
 ]

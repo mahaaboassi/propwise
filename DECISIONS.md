@@ -87,3 +87,8 @@ src/
 - These tokens were then used consistently across the application to maintain design consistency and avoid hardcoded values.
 
 - No arbitrary or approximate colors were introduced; all values originate directly from the Figma design.
+
+### Toast Management
+Toast behavior is limited to a maximum of 3 visible items.
+When a new toast is triggered, the oldest one is dismissed.
+This follows the default behavior of the notification system to maintain UI clarity.

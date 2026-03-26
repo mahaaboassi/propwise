@@ -30,11 +30,11 @@ const DashbaordPage = ()=>{
     const { theme } = useTheme()
     return(<div className="space-y-5">
         <HeaderDashboard/>
-        
+        {/* Required for useSearchParams() (Next.js client-side hydration) */}
         <Suspense fallback={null}>
             <DateFilterTabs />
         </Suspense>
-        
+
         <KPICards/>
         <div className="grid grid-cols-3 gap-4">
             <div className="col-span-3 mobile-md:col-span-2">

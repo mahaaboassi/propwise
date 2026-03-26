@@ -32,6 +32,8 @@ export interface ActivityEntry {
     relativeTime: string;
     icon: 'lead' | 'deal' | 'call' | 'email' | 'note' | 'task' | 'commission';
 }
+export interface  GroupEntryProps { label: string; entries: ActivityEntry[] } 
+
 export interface Task {
     id: string;
     title: string;

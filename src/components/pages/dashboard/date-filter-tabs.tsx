@@ -31,11 +31,11 @@ const DateFilterTabs = ()=>{
     const period: Period = VALID_PERIODS.includes(periodParam as Period)
     ? (periodParam as Period)
     : "today"
-    
+
     useEffect(() => {
         if (!period) return
         changePeriod(period)
-    }, [period, changePeriod])
+    }, [period])
 
     const dates: Date[] = [
         {label: "Today", value: "today"},
@@ -49,7 +49,8 @@ const DateFilterTabs = ()=>{
     const [currentDate, setCurrentDate] = useState<number>(
     initialIndex !== -1 ? initialIndex : 0
     )  
-
+    console.log("hererere");
+    
 
   
     const change = (index:number,date:Date)=>{
