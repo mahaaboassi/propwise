@@ -28,10 +28,10 @@ const KPICard = ({
   return (
     <div style={{ boxShadow: "var(--drop-shadow)" }} className="flex justify-between items-center bg-[var(--content-inverted)] rounded-xl p-4"> 
       {/* Left */}
-      <div>
+      <div className="flex flex-col gap-1">
         <h2 className="text-sm text-[var(--content-subtle)]">{label}</h2>
         {/* Counter for Values */}
-        <div className="text-[var(--content-emphasis)] font-bold text-lg desktop-sm:text-xl">
+        <div className="text-[var(--content-emphasis)] font-bold text-lg desktop-sm:text-2xl">
           <Counter
             value={Number(value)}
             prefix={label === "Revenue YTD" ? "AED " : ""}
@@ -40,7 +40,7 @@ const KPICard = ({
       </div>
 
       {/* Right */}
-      <div className="flex flex-col items-end gap-2">
+      <div className="flex flex-col items-end gap-1">
 
         {/* Sparkline */}
        <SparklineChart trendDirection={trendDirection} data={formattedData}/>
