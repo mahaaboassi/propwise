@@ -16,8 +16,9 @@ const ActivityFeed = ()=>{
     const [ activities, setActivities] = useState<
     { label: string; entries: ActivityEntry[] }[]
     >(data?.activities.groups || [])
-
+    
     useEffect(()=>{
+        // setActivities([])
         // Wait until data be not null
         setTimeout(()=>{
             if (data?.activities.groups) {

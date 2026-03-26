@@ -1,0 +1,8 @@
+export { default as HeaderDashboard } from "./dashboard-header"
+export { default as DateFilterTabs } from "./date-filter-tabs"
+export { default as KPICards } from "./kpi-cards"
+export { default as RevenueForecast } from "./revenue-forecast"
+export { default as ActivityFeed } from "./activity-feed"
+export { default as PipelineSummary } from "./pipeline-summary"
+export { default as TasksPanel } from "./tasks-panel"
+export { default as FixedInDashboard } from "./fixed-dashboard"

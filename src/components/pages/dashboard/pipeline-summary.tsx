@@ -6,6 +6,7 @@ import { ArrowUpRight } from "lucide-react"
 import { motion } from "framer-motion"
 import { useDashboard } from "@/hooks/use-dashboard"
 import Skeleton from "./dashboard-skeleton"
+import { useEffect } from "react"
 
 const calculateNumber = (number: number) => {
     if (number > 1000) {
@@ -14,7 +15,8 @@ const calculateNumber = (number: number) => {
     return number;
 };
 const PipelineSummary = () => {
-  const { loading, data } = useDashboard()
+  const { loading, data, refetch } = useDashboard()
+  useEffect(()=>{refetch()},[refetch])
 
   return (
     <Card className="bg-[var(--content-inverted)] p-4 !gap-4">

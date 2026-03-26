@@ -2,9 +2,14 @@
 import KPICard from "./kpi-card"
 import { useDashboard } from "@/hooks/use-dashboard"
 import Skeleton from "./dashboard-skeleton"
+import { useEffect } from "react"
 
 const KPICards = () => {
-    const { loading, data} = useDashboard()
+
+    const { loading, data, refetch } = useDashboard()
+    useEffect(()=>{refetch()},[refetch])
+    console.log("KPI cards",data);
+    
     if (loading) {
         return (
         <div className="grid mobile-md:grid-cols-2 desktop-sm:grid-cols-4 gap-4">

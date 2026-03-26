@@ -39,9 +39,10 @@ src/
 │   │   └── sidebar-item.tsx    → Individual navigation link (single item)
 │   ├── pages/
 │   │   └── dashboard/                 → Dashboard feature components
-│   │       ├── index.tsx              → Feature entry point (data orchestration + composition)
+│   │       ├── index.ts             
 │   │       ├── dashboard-header.tsx
 │   │       ├── date-filter-tabs.tsx
+│   │       ├── fixed-dashboard.tsx   -> For Fixed Parts ( Overlay div & support icon)
 │   │       ├── kpi-cards.tsx
 │   │       ├── kpi-card.tsx
 │   │       ├── revenue-forecast.tsx
@@ -88,7 +89,37 @@ src/
 
 - No arbitrary or approximate colors were introduced; all values originate directly from the Figma design.
 
-### Toast Management
-Toast behavior is limited to a maximum of 3 visible items.
-When a new toast is triggered, the oldest one is dismissed.
-This follows the default behavior of the notification system to maintain UI clarity.
+## 🎨 Data Fetching
+
+The mock data for the **"today"** period is implemented exactly as provided in the Figma design.  
+For the remaining periods, values are dynamically generated to simulate realistic variations.
+
+#### BONUS
+
+### 1. Dark Mode
+Implemented using `next-themes` with design system alias tokens to ensure consistent theming across the application.  
+You can change the mode using the theme button in the dashboard.
+
+### 2. Animated Pipeline Chart
+Added smooth entrance animations for the pipeline bar chart to enhance visual feedback and user experience.  
+Implemented using Framer Motion.
+
+### 3. Activity Feed Auto-Refresh
+Simulated real-time updates by periodically injecting new activity entries to mimic live data behavior.  
+Fake data is generated and managed in the `mock-data` file.
+
+### 4. URL-Synced Active Period
+The selected date filter is synced with the URL (`?period=`), enabling state persistence on refresh and allowing shareable views.
+
+### 5. Keyboard Navigation for Tabs
+Enabled full keyboard accessibility using arrow keys, Enter/Space actions.
+
+### 6. Per-Section Skeleton Loaders
+Implemented skeleton loaders across all sections to improve perceived performance and loading experience.
+
+### 7. Animated KPI Counters
+Implemented animated KPI number transitions using a reusable `counter.tsx` component in the UI folder, powered by Framer Motion.
+
+### 8. Toast Queue Management
+Toast notifications are limited to a maximum of three visible items.  
+When a new toast is triggered, the oldest one is dismissed to maintain a clean and non-intrusive UI.

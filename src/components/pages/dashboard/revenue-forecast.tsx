@@ -14,15 +14,15 @@ import {
   Tooltip,
   CartesianGrid 
 } from "recharts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDashboard } from "@/hooks/use-dashboard";
 import Skeleton from "./dashboard-skeleton";
 
 const RevenueForecast = () => {
     const [showThisYear, setShowThisYear] = useState(true);
     const [showLastYear, setShowLastYear] = useState(false);
-    const { loading, data } = useDashboard()
-    console.log(data);
+    const { loading, data, refetch } = useDashboard()
+    useEffect(()=>{refetch()},[refetch])
   return (
     <Card className="bg-[var(--content-inverted)] p-4 !gap-4">
       <Header level={2} title="Revenue Forecast" className="!text-[var(--content-grey)]" />
