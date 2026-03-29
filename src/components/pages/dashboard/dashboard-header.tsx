@@ -7,7 +7,7 @@ import { useTheme } from "next-themes";
 const HeaderDashboard = ()=>{
   const { theme, setTheme } = useTheme()
   return <div className="flex flex-col gap-5 tablet-md:flex-row justify-between">
-            <Header level={1} title="Dashborad" paragraph="Here's your pipeline health and sales activity at a glance." />
+            <Header level={1} title="Dashboard" paragraph="Here's your pipeline health and sales activity at a glance." />
             <div className="flex gap-2">
                 <Button className="">
                     <Plus className="" size={15}/> <span className="-mt-1">Create</span>

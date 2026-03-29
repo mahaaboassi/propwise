@@ -31,7 +31,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${figtree.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col max-w-[1440px] mx-auto">
         <ThemeProvider  attribute="class" defaultTheme="light" enableSystem>
           {children}
           <Toaster/>
