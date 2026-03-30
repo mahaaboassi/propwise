@@ -13,6 +13,7 @@ type Period =
 type PropsRandomValues= {
     name: string,
     msg: string,
+    highlight: string,
     icon: 'lead' | 'deal' | 'call' | 'email' | 'note' | 'task' | 'commission'
 }
 
@@ -101,16 +102,17 @@ const DashboardDataMock = {
         entries: [
           {
             id: "1",
-            message: "You were assigned a new lead:",
-            highlights: [{ text: "Ahmed Al-Rashid", type: "person" }],
+            message: "were assigned a new lead:",
+            highlights: [{ text: "You", type: "person" },
+              { text: "Ahmed Al-Rashid", type: "person" }],
             timestamp: "10 min ago",
             relativeTime: "now",
             icon: "lead",
           },
           {
             id: "2",
-            message: "System transferred deal to",
-            highlights: [{ text: "Negotiation stage", type: "stage" }],
+            message: "transferred deal to",
+            highlights: [{ text: "System", type: "stage" },{ text: "Negotiation stage", type: "stage" }],
             timestamp: "25 min ago",
             relativeTime: "now",
             icon: "deal",
@@ -122,8 +124,8 @@ const DashboardDataMock = {
         entries: [
           {
             id: "1",
-            message: "Nadia K. logged a call with",
-            highlights: [{ text: "James Chen", type: "person" }],
+            message: "logged a call with",
+            highlights: [{ text: "Nadia K.", type: "person" },{ text: "James Chen", type: "person" }],
             timestamp: "1h ago",
             relativeTime: "now",
             icon: "call",
@@ -248,28 +250,30 @@ export const getMockDashboardData = (period: Period): DashboardData => {
           entries: [
             {
               id: "1",
-              message: "You were assigned a new lead:",
-              highlights: [{ text: "Ahmed Al-Rashid", type: "person" }],
+              message: "were assigned a new lead:",
+              highlights: [{ text: "You", type: "person" },
+                { text: "Ahmed Al-Rashid", type: "person" }],
               timestamp: "10 min ago",
               relativeTime: "now",
               icon: "lead",
             },
             {
               id: "2",
-              message: "System transferred deal to",
-              highlights: [{ text: "Negotiation stage", type: "stage" }],
+              message: "transferred deal to",
+              highlights: [{ text: "System", type: "stage" },{ text: "Negotiation stage", type: "stage" }],
               timestamp: "25 min ago",
               relativeTime: "now",
               icon: "deal",
             },
           ],
-        },{
+        },
+        {
           label: "Earlier today",
           entries: [
             {
               id: "1",
-              message: "Nadia K. logged a call with",
-              highlights: [{ text: "James Chen", type: "person" }],
+              message: "logged a call with",
+              highlights: [{ text: "Nadia K.", type: "person" },{ text: "James Chen", type: "person" }],
               timestamp: "1h ago",
               relativeTime: "now",
               icon: "call",
@@ -413,32 +417,38 @@ export const menuAvatar: Menu[] = [
 export const randomEntries: PropsRandomValues[] = [
   {
     name: "Maha Abo Assi",
-    msg: "You were assigned a new lead:",
+    highlight: "You",
+    msg: "were assigned a new lead:",
     icon: "lead",
   },
   {
     name: "John Smith",
+    highlight: "System",
     msg: "New deal was created:",
     icon: "deal",
   },
   {
     name: "Sara Ali",
-    msg: "You received a call from:",
+    highlight: "Nadia K.",
+    msg: "received a call from:",
     icon: "call",
   },
   {
     name: "Ahmed Hassan",
+    highlight: "Lamar K.",
     msg: "New email received from:",
     icon: "email",
   },
   {
     name: "Lina Khaled",
-    msg: "Task was completed by:",
+    highlight: "Task ",
+    msg: "was completed by:",
     icon: "task",
   },
   {
     name: "Omar Nasser",
-    msg: "Commission updated for:",
+    highlight: "Commission",
+    msg: "updated for:",
     icon: "commission",
   },
 ]

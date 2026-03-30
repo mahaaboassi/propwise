@@ -13,8 +13,6 @@
     --brand-700: #203F9E;
     --brand-800: #152B6D;
     --gray-500: #6B7280;
-    --custom-border: #E1E4ED;
-    --border-grey: #E8EBF2;
     --icon-color: #B4B9C9;
     --stone-500: #757575;
     --stone-800: #2E2E2E;
@@ -28,7 +26,11 @@
     --content-badge-down: #B91C1C;
     --bg-badge-med: #FFFBEB;
     --content-badge-med: #B45309;
-    /* --inner-shadow: ; */
+
+    /* Color Usage but not Exist in Alias */
+    --custom-surface: #091026;
+    --custom-border: #E1E4ED;
+    --black: black;
   /* Alias  */
   /* Background */
     --bg-emphasis : #E5E7EB; 
@@ -40,7 +42,7 @@
     --bg-success: #E2FBE8;
     --bg-attention: #FCEED8;
     --bg-error: #F9E3E2;
-    --bg-surface: #ffffff; /* Extra */
+    --bg-surface: #ffffff; 
     --bg-surface-opactity: rgba(255, 255, 255, 0.416); /* Extra */
     --bg-surface-opactity-2: rgba(79, 78, 78, 0.316); /* Extra */
   /* Border */
@@ -122,7 +124,10 @@
   }
 
   .dark {
-    --border-grey: #737373c9; /* Extra */
+    /* Color Usage but not Exist in Alias */
+    --custom-surface: #c5cad9;
+    --custom-border: #e1e4ed70;
+    --black: rgb(255, 255, 255);
   /* Alias from Figma  */
   /* Background */
     --bg-emphasis : #525252; 
@@ -134,7 +139,7 @@
     --bg-success: #285231;
     --bg-attention: #73321B;
     --bg-error: #752522;
-    --bg-surface: #272727; /* Extra */
+    --bg-surface: #272727; 
   /* Border */
     --border-emphasis: #757575;
     --border-default: #575757;
@@ -194,7 +199,7 @@
 
     /* Charts */
     --chart-1: var(--brand-bg-default);
-    --chart-2: #6B7280;
+    /* --chart-2: #6B7280; */
     --chart-3: #9CA3AF;
     --chart-4: #D1D5DB;
     --chart-5: #E5E7EB;
@@ -254,7 +259,7 @@
       @apply  rounded-[6px]  p-[8px] 
     }
     .icon-menu{
-       @apply text-[var(--stone-500)] size-[16px] text-[var(--content-default)];
+       @apply text-[var(--stone-500)] size-[16px];
     }
     .item-menu.active{
       @apply bg-[var(--brand-50)] text-[var(--brand-700)];
@@ -273,7 +278,7 @@
     }
 
     .icon-cover{
-      @apply w-[17.54px] h-[17.54px] border-[0.77px] border-[#E1E4ED] rounded-xxs text-xxs leading-[12px] font-menlo text-[#B4B9C9] font-bold;
+      @apply w-[17.54px] h-[17.54px] border-[0.77px] border-[var(--custom-border)] rounded-xxs text-xxs leading-[12px] font-menlo text-[#B4B9C9] font-bold;
     }
     /* Dashboard */
     .link{
@@ -281,21 +286,22 @@
     }
 
     .blur-div{
-      @apply fixed -bottom-5 left-0 tablet-md:left-[264px] right-0 h-[50px] z-10;
+      @apply fixed bottom-0 left-0 tablet-md:left-[267px] right-0 h-[62px] z-10;
 
-        background: linear-gradient(
-          to top,
-          rgba(255, 255, 255, 0.8),
-          rgba(255, 255, 255, 0.4),
-          rgba(255, 255, 255, 0.1),
-          rgba(255, 255, 255, 0)
-        );
+      /* background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 100%
+      ); */
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
 
-        backdrop-filter: blur(2px);
-        -webkit-backdrop-filter: blur(2px);
+      mask-image: linear-gradient(to bottom, transparent, black);
+      -webkit-mask-image: linear-gradient(to bottom, transparent, black);
+
       }
     .blur-dark{
-      @apply fixed -bottom-5 left-0 tablet-md:left-[264px] right-0 h-[50px] z-10;
+      @apply fixed bottom-0 left-0 tablet-md:left-[267px] right-0 h-[50px] z-10;
 
         background: linear-gradient(
           to top,

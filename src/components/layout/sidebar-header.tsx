@@ -23,9 +23,9 @@ type ItemProps = {
 }
 const ItemMenu = ({icon, name, badge }: ItemProps) => {
     const Icon = icon ? iconMap[icon as IconName] : null
-    return(<div  className={`flex group items-center justify-between gap-2 cursor-pointer hover:bg-[var(--bg-emphasis)] transition-all duration-300 rounded-md p-1`}>
+    return(<div  className={`${name !== "Sign out" ? "h-[30.75px]" : ""} flex group items-center justify-between gap-2 cursor-pointer hover:bg-stone-200 transition-all duration-300 rounded-sm p-1`}>
         <div className="flex gap-1 items-center text-[#909BB2]">
-            {Icon && <Icon className="icon-menu size-[13.99px] " />}
+            {Icon && <Icon className="size-[13.99px]" />}
             <span className="text-[12.5px] text-[#5A6478] font-normal leading-[18.75px]">{name}</span>
         </div>
         {badge && <Badge className="font-medium text-xs leading-[12px] text-[var(--attention-content)] bg-[var(--bg-error)] h-[16px] w-[16px] rounded-full">{badge}</Badge>}
@@ -73,7 +73,7 @@ const SidebarHeader = ({onClick}: Props)=>{
                 </div>
             </PopoverTrigger>
             <PopoverContent side="bottom" align="start" sideOffset={8} alignOffset={0} 
-                className="w-[231.25px] h-[233.27px] rounded-lg outline-none !p-0 bg-[#FFFFFF]">
+                className="w-[231.25px] h-[233.27px] !gap-0 rounded-lg outline-none !p-0 bg-[#FFFFFF] shadow-[0px_-1px_4px_0px_rgba(18,32,76,0.05),0px_-6px_28px_0px_rgba(18,32,76,0.1)]">
                   <div className="flex items-center gap-[8px] h-[56.5px] px-[12px] border-b-[0.77px] border-[#F0F1F5]">
                       <div className="w-[31.49px] h-[32px] !rounded-xl overflow-hidden">
                         <Image className="object-contain" width={100} height={100} alt="logo" src={"/images/company_logo_2.png" } />
@@ -87,7 +87,7 @@ const SidebarHeader = ({onClick}: Props)=>{
                   <div className="px-[7.9px] h-[37.95px] flex items-center justify-between ">
                         <div className="flex gap-1 items-center">
                           <div className="h-[8.99px] w-[8.99px] rounded-full bg-[var(--green-700)]"></div>
-                          <span className="font-normal text-[12.5px] text-[#5A6478 leading-[18.75px]">Online</span>
+                          <span className="font-normal text-[12.5px] text-[#5A6478] leading-[18.75px]">Online</span>
                         </div>
                         <Badge className="uppercase text-[var(--content-badge-up)] bg-[var(--bg-badge-up)] text-[9px] leading-[13.5px] font-bold font-heading px-[5px] py-[1px] rounded-[4px]">active</Badge>
                     </div>
@@ -117,7 +117,8 @@ const SidebarHeader = ({onClick}: Props)=>{
               text-[13px] placeholder:text-[13px] placeholder:text-[rgba(160,160,160,1)] placeholder:font-[400]" />
             </div>
             <div className="flex gap-[2.99px] items-center text-[var(--icon-color)]">
-              <div className="icon-cover flex-center">⌘</div>
+              {/* <div className="icon-cover flex-center">⌘</div> */}
+              <div className="icon-cover flex-center"><Command className="size-[10px]" /></div>
               <div className="icon-cover flex-center">K</div>
             </div>
           </div>

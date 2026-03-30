@@ -19,7 +19,7 @@ const PipelineSummary = () => {
   useEffect(()=>{refetch()},[refetch])
 
   return (
-    <Card className="bg-[var(--bg-surface)] border-[#E1E4ED] border-[0.77px] rounded-md
+    <Card className="bg-[var(--bg-default)] border-[var(--custom-border)] border-[0.77px] rounded-md
             shadow-[0px_1px_0px_rgba(26,26,26,0),0px_1px_0px_rgba(204,204,204,0.4),0px_-1px_0px_rgba(0,0,0,0.07),-1px_0px_0px_rgba(0,0,0,0.03),1px_0px_0px_rgba(0,0,0,0.03)] 
             p-[20px] gap-[26px]">
 
@@ -27,7 +27,7 @@ const PipelineSummary = () => {
         <Header
           title="Pipeline Summary"
           level={2}
-          className="font-heading text-base font-medium leading-[20.8px] text-[#091026]"
+          className="font-heading text-base font-medium leading-[20.8px] text-[var(--custom-surface)]"
           paragraph={data
               ? `${data.pipeline.totalDeals} deals across ${data.pipeline.totalStages} stages · ${data.pipeline.totalValue} total value`
               : ""}

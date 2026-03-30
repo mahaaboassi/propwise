@@ -32,7 +32,7 @@ const RevenueForecast = () => {
     const { loading, data, refetch } = useDashboard()
     useEffect(()=>{refetch()},[refetch])
   return (
-    <Card className="bg-[var(--bg-surface)] h-[347.98px] border-[#E1E4ED]  border-[0.77px] rounded-md flex flex-col gap-[16px]">
+    <Card className="bg-[var(--bg-default)] h-[347.98px] border-[var(--custom-border)]  border-[0.77px] rounded-md flex flex-col gap-[16px]">
       <div className="flex flex-col gap-[4px] px-[20px] mt-[15px]">
         <div className="flex justify-between ">
           <Header level={2} title="Revenue Forecast" className="text-[#686868] font-normal text-[14px] leading-[20.8px]" />
@@ -49,7 +49,7 @@ const RevenueForecast = () => {
 
         {/* Top Section */}
         {loading? <Skeleton className="h-10 w-1/2" /> :<div className="flex justify-between w-[313.56px] items-center">
-          <span className="text-[#091026] font-bold text-[28px] leading-[28px] font-heading">
+          <span className="text-[var(--custom-surface)] font-bold text-[28px] leading-[28px] font-heading">
             {data?.revenue.total}
           </span>
 
@@ -75,7 +75,7 @@ const RevenueForecast = () => {
                 className={`flex items-center cursor-pointer gap-[6px] `}
             >
                  <span className={`w-[12px] h-[2.99px] rounded-[2.5px] ${
-                showThisYear ? "bg-[var(--chart-2)]" : "bg-[#E1E4ED]"
+                showThisYear ? "bg-[var(--chart-2)]" : "bg-[var(--custom-border)]"
                 }`} />
                 This Year
             </div>
@@ -85,7 +85,7 @@ const RevenueForecast = () => {
                 className={`flex items-center cursor-pointer gap-[6px]`}
             >
                 <span className={`w-[12px] h-[2.99px] rounded-[2.5px]  ${
-                showLastYear ? "bg-[var(--chart-2)]" : "bg-[#E1E4ED]"
+                showLastYear ? "bg-[var(--chart-2)]" : "bg-[var(--custom-border)]"
                 }`} />
                 Last Year
             </div>

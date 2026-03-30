@@ -26,14 +26,14 @@ const KPICard = ({
     down: "text-[var(--content-badge-down)] bg-[var(--bg-badge-down)]",
   }
   return (
-    <div className="flex justify-between items-center bg-[var(--bg-surface)] rounded-md w-[277px] h-[58px]
+    <div className="flex justify-between items-center bg-[var(--bg-default)] rounded-md w-[277px] h-[58px]
             shadow-[0px_1px_0px_rgba(26,26,26,0),0px_1px_0px_rgba(204,204,204,0.4),0px_-1px_0px_rgba(0,0,0,0.07),-1px_0px_0px_rgba(0,0,0,0.03),1px_0px_0px_rgba(0,0,0,0.03)] py-[12px] px-[16px]
     "> 
       {/* Left */}
       <div className="flex flex-col ">
         <h2 className="text-xs font-[450] text-[#5F5F5F] leading-[20px]">{label}</h2>
         {/* Counter for Values */}
-        <div className="text-[#000000] font-[650] text-base leading-[20px]">
+        <div className="text-[var(--black)] font-[650] text-base leading-[20px]">
           <Counter
             value={Number(value)}
             prefix={label === "Revenue YTD" ? "AED " : ""}
