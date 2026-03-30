@@ -30,8 +30,8 @@ export default function DashboardLayout({
         {/* ---- layout Dashboard */}
                 {/* <div className="flex pl-[9px] mr-[10px] pt-[11px] -top-[2px] relative 
                          justify-end ml-[217px] w-[calc(100vw-(217px+20px))]"> */}
-        <div className="flex pr-[9px] pl-[9px]  mr-[10px] pt-[11px] -top-[2px] tablet-md:relative 
-                        tablet-md:px-0 tablet-md:justify-end tablet-md:ml-[217px] w-[calc(100vw-(217px+20px))]">
+        <div className="flex pr-[9px] pl-[9px] w-full  mr-[10px] pt-[11px] -top-[2px] tablet-md:relative 
+                        tablet-md:px-0 tablet-md:justify-end tablet-md:ml-[217px] tablet-md:w-[calc(100vw-(217px+20px))]">
           {/* ---- Content Dashboard  */}
           <Card className="bg-[var(--bg-default)] w-full mt-20 tablet-md:mt-0 border-[#E9E9E9] border-[1px] rounded-md ">
               <main >
