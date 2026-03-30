@@ -25,7 +25,7 @@ export default function DashboardLayout({
             Fixed Figma Value ( 1204px )
             layout Dashboard - 9px
             9px = 1213px - 1204px
-            Card = fills wrapper width minus 9px gap
+            Card = fills wrapper width minus 9px
         */}
         {/* ---- layout Dashboard */}
         <div className="flex pr-[9px] pl-[9px] pt-[11px] -top-[2px] relative 

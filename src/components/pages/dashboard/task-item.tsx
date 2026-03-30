@@ -29,7 +29,7 @@ const TaskItem = ({ task }: Props) => {
   const changeValue = (val:boolean)=>{
     if(val){
       appToast.action({
-          message: "Task is completed.",
+          message: "Task completed.",
           label: "Undo",
           type: "success",
           onAction: () => {
@@ -72,7 +72,7 @@ const TaskItem = ({ task }: Props) => {
             <div className="flex gap-[4px] items-center text-[#6E7991]">
               <Clock className="size-[12px]" />
               <span className="text-[11px] font-normal leading-[16.5px] ">{task.dueLabel} </span>
-              <span className="font-semibold leading-[15px] text-xxs">task</span>
+              <span className="font-semibold leading-[15px] text-xxs capitalize">{task.type}</span>
             </div>
           </div>
 

@@ -64,12 +64,12 @@ const DateFilterTabs = () => {
 
     router.push(`?${params.toString()}`, { scroll: false })
 
-    appToast.neutral("Fetching data Successfully.", {
-      action: {
-        label: <X className="size-4" />,
-        onClick: () => {},
-      },
-    })
+    appToast.action({
+          message: `Dashboard updated to [${date.value}]`,
+          label: "",
+          type: "neutral",
+          onAction: async () =>{}
+      })
   }
 
   // Keyboard navigation for date filter tabs
@@ -127,7 +127,7 @@ const DateFilterTabs = () => {
                     ? "text-[var(--content-emphasis)] shadow-[0px_1px_3px_0px_rgba(0,0,0,0.1),0px_0px_2px_0px_rgba(0,0,0,0.06)] bg-[var(--bg-default)]"
                     : "hover:text-[var(--content-subtle)]"
                 }
-                h-full !text-[#9CA3AF] w-[80px] desktop-md:w-[91.67px] h-[27px]
+                h-full px-[12px] py-[9px] !text-[#9CA3AF] w-[80px] desktop-md:w-[91.67px] h-[27px]
                 focus:outline-none focus:ring-1 focus:ring-[var(--content-subtle)]
               `}
             >

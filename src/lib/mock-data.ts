@@ -89,9 +89,9 @@ const DashboardDataMock = {
       { stage: "New Lead", count: 42, value: 840000, currency: "AED" },
       { stage: "Contacted", count: 28, value: 560000, currency: "AED" },
       { stage: "Qualified", count: 18, value: 450000, currency: "AED" },
-      { stage: "Proposal", count: 15, value: 450000, currency: "AED" },
-      { stage: "Negotiation", count: 12, value: 300000, currency: "AED" },
-      { stage: "Closed Won", count: 8, value: 200000, currency: "AED" },
+      { stage: "Proposal", count: 18, value: 450000, currency: "AED" },
+      { stage: "Negotiation", count: 8, value: 0, currency: "AED" },
+      { stage: "Closed Won", count: 5, value: 0, currency: "AED" },
     ],
   },
 

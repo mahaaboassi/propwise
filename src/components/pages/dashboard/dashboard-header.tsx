@@ -1,7 +1,8 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import Header from "@/components/ui/header"
-import { Moon, Plus, Sun } from "lucide-react";
+import { appToast } from "@/lib/toast";
+import { Moon, Plus, Sun, X } from "lucide-react";
 import { useTheme } from "next-themes";
 
 const HeaderDashboard = ()=>{
@@ -9,7 +10,14 @@ const HeaderDashboard = ()=>{
   return <div className="flex flex-col gap-5 tablet-md:flex-row justify-between tablet-md:items-center">
             <Header level={1} title="Dashboard" paragraph="Here's your pipeline health and sales activity at a glance." />
             <div className="flex gap-2">
-                <Button variant={"default"}>
+                <Button onClick={()=>{
+                              appToast.action({
+                                    message: "Feature coming soon",
+                                    label: "",
+                                    type: "neutral",
+                                    onAction: async () =>{}
+                                })
+                }} variant={"default"}>
                     <Plus className="size-[16px]"/> <span>Create</span>
                 </Button>
                 <Button variant={"default"} onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="">

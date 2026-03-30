@@ -14,7 +14,7 @@ const TasksPanel = ()=>{
             <div className="flex gap-2 flex-col desktop-sm:flex-row desktop-sm:items-center justify-between w-full ">
                 <Header
                 title="Tasks & Reminders"
-                className="font-bold font-heading leading-[20.8px] text-sm"
+                className="font-bold font-heading leading-[20.8px] text-base"
                 level={2}/>
 
                 <div className="link flex items-center gap-[3px] 
@@ -25,7 +25,7 @@ const TasksPanel = ()=>{
                 
             </div>
 
-            {loading? <Skeleton className="h-12 w-full" /> : <div className="flex items-center gap-1">
+            {loading? <Skeleton className="h-12 w-full" /> : <div className="flex items-center gap-[7.99px]">
                 {data?.tasks && <div className="flex-1 h-[6px] bg-[#F1F3F7] rounded-[2.5px] ">
                     <motion.div
                     initial={{ width: 0 }}

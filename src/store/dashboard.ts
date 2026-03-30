@@ -30,7 +30,7 @@ export const fetchDashboardAtom = atom(
     } catch (e) {
       console.error(e);
       appToast.action({
-          message: "Something went wrong",
+          message: "Failed to load data",
           label: "Retry",
           type: "error",
           onAction: async () => {

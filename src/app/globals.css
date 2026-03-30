@@ -289,22 +289,20 @@
     }
 
     .blur-div{
-      @apply fixed bottom-0 left-0 tablet-md:left-[267px] right-0 h-[62px] z-10;
+      @apply fixed bottom-0 left-0 tablet-md:left-[226px] right-0 h-[62px] z-10;
 
       /* background: linear-gradient(
         to bottom,
         rgba(255, 255, 255, 0) 0%,
         rgba(255, 255, 255, 0) 100%
-      ); */
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-
-      mask-image: linear-gradient(to bottom, transparent, black);
-      -webkit-mask-image: linear-gradient(to bottom, transparent, black);
-
+      );
+      */
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #FFFFFF 100%);
+      backdrop-filter: blur(2px);
+      /* background-color: red; */
       }
     .blur-dark{
-      @apply fixed bottom-0 left-0 tablet-md:left-[267px] right-0 h-[50px] z-10;
+      @apply fixed bottom-0 left-0 tablet-md:left-[226px] right-0 h-[50px] z-10;
 
         background: linear-gradient(
           to top,
@@ -319,13 +317,22 @@
       }
     /* Toast Classes */
     .cn-toast {
-        @apply !bg-[var(--bg-inverted)] !text-[var(--content-inverted)] !rounded-lg !border-[var(--toast-border)];
+        @apply !bg-[var(--bg-inverted)] !text-[var(--content-inverted)] !border-none;
+        box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.05),
+                    0px 2px 2px 0px rgba(0, 0, 0, 0.1),
+                    0px 1px 2px 0px rgba(0, 0, 0, 0.08),
+                    0px 1px 1px 0px rgba(0, 0, 0, 0.07) !important;
       }
     .cn-toast button{
       @apply !text-[var(--content-inverted)] hover:!bg-transparent; 
     }
     .cn-toast-error {
-        @apply !bg-[var(--bg-error)] !text-[var(--content-error)] !rounded-lg !border-[var(--toast-border)];
+        @apply !bg-[var(--bg-error)] !text-[var(--content-error)] ;
+        box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.05),
+                    0px 2px 2px 0px rgba(0, 0, 0, 0.1),
+                    0px 1px 2px 0px rgba(0, 0, 0, 0.08),
+                    0px 1px 1px 0px rgba(0, 0, 0, 0.07) !important;
+
       }
     .cn-toast-error button{
       @apply !text-[var(--content-error)]
