@@ -25,7 +25,7 @@ const Sidebar = () => {
   }
 
   return (
-    <nav className="flex flex-col gap-[12px] tablet-md:w-[224px] tablet-md:sticky top-0">
+    <nav className="flex flex-col gap-[12px] w-[224px] tablet-md:sticky top-0">
       {/* Top Bar */}
       <SidebarHeader onClick={()=>setOpenMenuSmallSize(true)}/>
 

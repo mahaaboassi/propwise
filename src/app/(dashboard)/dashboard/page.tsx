@@ -12,19 +12,23 @@ const Dashboard = () =>{
                 </Suspense>
             </div>
             <KPICards/>
+            {/* Main width ( 1144px )
+                718px it's 62.76% from 1144px => w-[62.76%]
+                400px it's 34.96% from 1144px => w-[34.96%]
+             */}
             <div className="flex gap-[26px] w-full">
-                <div className="w-[718px]">
+                <div className="w-[62.76%]">
                     <RevenueForecast/>
                 </div>
-                <div className="w-[400px]">
+                <div className="w-[34.96%]">
                     <ActivityFeed/>
                 </div>
             </div>
             <div className="flex gap-[26px] w-full">
-                <div className="w-[718px]">
+                <div className="w-[62.76%]">
                     <PipelineSummary/>
                 </div>
-                <div className="w-[400px]">
+                <div className="w-[34.96%]">
                     <TasksPanel/>
                 </div>
             </div>

@@ -26,7 +26,7 @@ const KPICard = ({
     down: "text-[var(--content-badge-down)] bg-[var(--bg-badge-down)]",
   }
   return (
-    <div className="flex justify-between items-center bg-[var(--bg-default)] rounded-md w-[277px] h-[58px]
+    <div className="flex justify-between items-center bg-[var(--bg-default)] rounded-md w-full h-[58px]
             shadow-[0px_1px_0px_rgba(26,26,26,0),0px_1px_0px_rgba(204,204,204,0.4),0px_-1px_0px_rgba(0,0,0,0.07),-1px_0px_0px_rgba(0,0,0,0.03),1px_0px_0px_rgba(0,0,0,0.03)] py-[12px] px-[16px]
     "> 
       {/* Left */}
