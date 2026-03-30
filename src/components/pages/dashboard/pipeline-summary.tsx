@@ -19,12 +19,15 @@ const PipelineSummary = () => {
   useEffect(()=>{refetch()},[refetch])
 
   return (
-    <Card className="bg-[var(--content-inverted)] p-4 !gap-4">
+    <Card className="bg-[var(--bg-surface)] border-[#E1E4ED] border-[0.77px] rounded-md
+            shadow-[0px_1px_0px_rgba(26,26,26,0),0px_1px_0px_rgba(204,204,204,0.4),0px_-1px_0px_rgba(0,0,0,0.07),-1px_0px_0px_rgba(0,0,0,0.03),1px_0px_0px_rgba(0,0,0,0.03)] 
+            p-[20px] gap-[26px]">
 
       <div className="flex gap-2 flex-col desktop-sm:flex-row justify-between w-full">
         <Header
           title="Pipeline Summary"
           level={2}
+          className="font-heading text-base font-medium leading-[20.8px] text-[#091026]"
           paragraph={data
               ? `${data.pipeline.totalDeals} deals across ${data.pipeline.totalStages} stages · ${data.pipeline.totalValue} total value`
               : ""}
@@ -32,32 +35,33 @@ const PipelineSummary = () => {
 
         <Link
           href="#"
-          className="link desktop-sm:flex-center flex  gap-2 "
+          className="link flex items-center justify-between w-[53.27px] font-heading
+                        text-[#3567FF] text-xs leading-[18px] font-semibold"
         >
-          Details <ArrowUpRight size={17} />
+          Details <ArrowUpRight className="size-[12px]" />
         </Link>
       </div>
 
-      <div className="flex flex-col gap-2">
-        { loading ? Array.from({ length: 4 }).map((_,i)=><Skeleton className="h-16 w-full" key={`Sketlon_Pipeline_${i}`}/>) :
+      <div className="flex flex-col gap-[6px]">
+        { loading ? Array.from({ length: 6 }).map((_,i)=><Skeleton className="h-[29.99px] w-full" key={`Sketlon_Pipeline_${i}`}/>) :
          data?.pipeline.stages.map((stage, idx) => {
               const maxCount = Math.max(
                 ...data.pipeline.stages.map((s) => s.count)
               );
           return (
-            <div key={`Stage_${stage.stage}_${idx}`} className="flex flex-col gap-1 tablet-md:flex-row tablet-md:gap-2 tablet-md:items-center">
-              <div className="w-[80px] tablet-md:w-[100px] text-sm">{stage.stage}</div>
+            <div key={`Stage_${stage.stage}_${idx}`} className="flex flex-col gap-[2px] tablet-md:flex-row tablet-md:gap-2 tablet-md:items-center">
+              <div className="w-[87.99px] flex justify-end font-medium leading-[18px] text-xs text-[#3D4A65]">{stage.stage}</div>
               <div className="flex-1">
                 <motion.div
-                    className="bg-[var(--brand-800)] h-[40px] p-1 rounded-lg"
+                    className="bg-[var(--brand-800)] h-[29.99px] py-[3px] pl-[3px] rounded-xs"
                     initial={{ width: 0 }}
                     whileInView={{ width: `${(stage.count / maxCount) * 100}%` }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                 >
-                  <div className="bg-[var(--bg-surface-opactity)] text-white w-fit h-full flex items-center rounded-lg px-2 text-[0.6rem] desktop-sm:text-xs">
-                    <span className="font-medium">{stage.count}</span>
-                    &nbsp; {stage.currency} {calculateNumber(stage.value)}
+                  <div style={{background:"rgba(255, 255, 255, 0.2)"}} className="font-heading w-fit py-[3px] px-[6px]  h-full flex items-center gap-[8px] rounded-xs ">
+                    <span className="font-bold text-xs leading-[18px] text-[#FFFFFF]">{stage.count}</span>
+                    <span style={{color: "rgba(255,255,255,0.7)"}} className="font-medium text-[11px] leading-[16.5px]">{stage.currency} {calculateNumber(stage.value)}</span>
                   </div>
                 </motion.div>
               </div>

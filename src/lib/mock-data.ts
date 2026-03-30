@@ -40,7 +40,7 @@ const DashboardDataMock = {
     },
     {
       label: "Revenue YTD",
-      value: "142",
+      value: "1420000",
       trend: 24.6,
       trendDirection: "up",
       sparklineData: [20, 25, 30, 28, 35, 50, 60],
@@ -85,10 +85,10 @@ const DashboardDataMock = {
     totalStages: 6,
     totalValue: "AED 2.75M",
     stages: [
-      { stage: "New Lead", count: 50, value: 840000, currency: "AED" },
-      { stage: "Contacted", count: 42, value: 560000, currency: "AED" },
-      { stage: "Qualified", count: 28, value: 450000, currency: "AED" },
-      { stage: "Proposal", count: 18, value: 450000, currency: "AED" },
+      { stage: "New Lead", count: 42, value: 840000, currency: "AED" },
+      { stage: "Contacted", count: 28, value: 560000, currency: "AED" },
+      { stage: "Qualified", count: 18, value: 450000, currency: "AED" },
+      { stage: "Proposal", count: 15, value: 450000, currency: "AED" },
       { stage: "Negotiation", count: 12, value: 300000, currency: "AED" },
       { stage: "Closed Won", count: 8, value: 200000, currency: "AED" },
     ],
@@ -376,7 +376,7 @@ export const sidebarData: SidebarTypes[] = [
     name: "Team",
     key: "team",
     link: "/team",
-    icon: "inbox",
+    icon: "team",
     children: [],
   }, {
     name: "Settings",

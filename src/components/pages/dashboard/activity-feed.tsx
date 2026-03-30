@@ -27,35 +27,35 @@ const ActivityFeed = ()=>{
         },500)
     },[data])
     // Activity feed auto-refresh with simulated real-time updates 
-    useEffect(() => {
-        const interval = setInterval(() => {
-        setActivities((prev)  => {
-        if (!prev) return prev
-        const numberRandom = getRandom(0,4)
-        const newEntry : ActivityEntry = {
-            id: Date.now().toLocaleString(),
-            message: randomEntries[numberRandom].msg,
-            highlights: [{ text: randomEntries[numberRandom].name, type: "person" }],
-            timestamp: "Just now",
-            relativeTime: "now",
-            icon: randomEntries[numberRandom].icon ,
-        }
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //     setActivities((prev)  => {
+    //     if (!prev) return prev
+    //     const numberRandom = getRandom(0,4)
+    //     const newEntry : ActivityEntry = {
+    //         id: Date.now().toLocaleString(),
+    //         message: randomEntries[numberRandom].msg,
+    //         highlights: [{ text: randomEntries[numberRandom].name, type: "person" }],
+    //         timestamp: "Just now",
+    //         relativeTime: "now",
+    //         icon: randomEntries[numberRandom].icon ,
+    //     }
 
-        return prev.map((group, index) => {
-            if (index === 0) {
-            return {
-                ...group,
-                entries: [newEntry, ...group.entries].slice(0, 3), // limit
-            }
-            }
+    //     return prev.map((group, index) => {
+    //         if (index === 0) {
+    //         return {
+    //             ...group,
+    //             entries: [newEntry, ...group.entries].slice(0, 3), // limit
+    //         }
+    //         }
 
-            return group
-        })
-        })
-    }, 10000)
+    //         return group
+    //     })
+    //     })
+    // }, 10000)
 
-    return () => clearInterval(interval)
-    }, [])
+    // return () => clearInterval(interval)
+    // }, [])
     
     if(activities.length==0 || !data?.activities.groups) return(<Card className="bg-[var(--content-inverted)] py-4 !gap-0">
         <div className="px-4">
@@ -73,25 +73,31 @@ const ActivityFeed = ()=>{
         </div>
     </Card>)
 
-    return(<Card className="bg-[var(--content-inverted)] py-4 !gap-0">
-        <div className="px-4">
-            <Header level={2} title="Activity Feed" />
+    return(<Card className="bg-[var(--bg-surface)] h-[347.98px] border-[#E1E4ED] border-[0.77px] rounded-lg">
+        <div className="px-[19.99px] h-[51px] flex items-center border-b-[0.77px] border-[#F1F3F7] ">
+            <Header level={2} title="Activity Feed" className="font-heading font-medium text-base leading-[20.8px] text-[#091026] " />
         </div>
-        <div>
-            {loading? <div className="flex flex-col gap-3 p-4">
-                {Array.from({ length: 3 }).map((_,i)=><Skeleton className="h-20 w-full" key={`Sketlon_Activity_${i}`}/>)}
-            </div> : activities.length>0 && activities.map((group,idx)=>(<div key={`Activity_Group_${group.label}_${idx}`} >
-                <h3 className="bg-[var(--border-muted)] border-t border-b border-[var(--border-default)] px-4 py-2 text-xs desktop-sm:text-sm text-[var(--content-subtle)] uppercase font-medium mt-4">{group.label}</h3>
-                <div className="px-4">
-                    <ul className="border-l-2 border-[var(--border-default)] flex flex-col gap-3 pt-4">
-                        {group.entries.map((entry,i)=>(<ActivityEntryComponent  key={`Activity_Group_Entry_${entry.message}_${i}`} entry={entry} />))}
-                    </ul>
-                </div>
-            </div>))}
+        {/* Content  */}
+        <div className="div-scroll overflow-y-auto h-[253.93px] ">
+            <div >
+                {loading? <div className="flex flex-col gap-3 px-[19.99px] pt-3">
+                    {Array.from({ length: 4 }).map((_,i)=><Skeleton className="h-[50px] w-full rounded-md" key={`Sketlon_Activity_${i}`}/>)}
+                </div> : activities.length>0 && activities.map((group,idx)=>(<div key={`Activity_Group_${group.label}_${idx}`} >
+                    <h3 className="bg-[#FAFBFF] border-b-[0.77px] border-[#F1F3F7] px-[19.99px] h-[37px] flex items-center
+                                    text-xxs text-[var(--content-subtle)] leading-[15px] tracking-[0.5px] uppercase font-bold ">{group.label}</h3>
+                    <ul >
+                            {group.entries.map((entry,i)=>(<li className="h-[62.46px] flex items-center relative px-[33.98px]" key={`Activity_Group_Entry_${entry.message}_${i}`} >
+                                <ActivityEntryComponent entry={entry} />
+                            </li>))}
+                        </ul>
+                </div>))}
+            </div>
         </div>
-        <div>
-            <Link href={"#"} className="link flex-center w-full px-4 gap-2 pt-4 ">
-            View full activity log <ArrowUpRight size={17} />
+
+        <div className="flex items-center justify-center h-[43px] border-t-[0.77px] border-[#F1F3F7]">
+            <Link href={"#"} className="link flex items-center gap-[4px]  font-heading
+                        text-[#3567FF] text-xs leading-[18px] font-semibold">
+            View full activity log <ArrowUpRight className="size-[12px]" />
             </Link>
         </div>
     </Card>)

@@ -50,29 +50,29 @@ const TaskItem = ({ task }: Props) => {
     setIsChecked(!!val)
   }
   return (
-    <li className="flex flex-col mobile-sm:flex-row mobile-md:flex-col desktop-sm:flex-row justify-between gap-2">
+    <li className="flex  justify-between gap-[12px] h-[65.94px]">
       
       <FieldGroup>
         <Field className="items-start" orientation="horizontal">
-          
           <Checkbox
             id={checkboxId}
             checked={isChecked}
             onCheckedChange={(val:boolean) => changeValue(val)}
-            className="rounded-full"
+            className="rounded-full h-[17.99px] w-[17.99px]"
           />
 
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-[3.99px]">
             <Label
               htmlFor={checkboxId}
-              className={`${isChecked ? "line-through" : ""} text-xs desktop-sm:text-base`}
+              className={`${isChecked ? "line-through" : ""} text-[13px] font-medium leading-[18.2px]`}
             >
               {task.title}
             </Label>
 
-            <div className="flex gap-2 items-center text-[0.7rem] desktop-sm:text-xs text-[var(--content-muted)] font-medium">
-              <Clock size={14} />
-              {task.dueLabel} task
+            <div className="flex gap-[4px] items-center text-[#6E7991]">
+              <Clock className="size-[12px]" />
+              <span className="text-[11px] font-normal leading-[16.5px] ">{task.dueLabel} </span>
+              <span className="font-semibold leading-[15px] text-xxs">task</span>
             </div>
           </div>
 
@@ -80,7 +80,7 @@ const TaskItem = ({ task }: Props) => {
       </FieldGroup>
 
       {/* Badge */}
-      <Badge className={`${priorityStyles[task.priority]} flex items-center gap-1 rounded-md`}>
+      <Badge  className={`${priorityStyles[task.priority]} px-[5px] py-[1px] !text-xxs font-semibold leading-[15px] rounded-md`}>
         {task.priority}
       </Badge>
 

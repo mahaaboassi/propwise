@@ -12,9 +12,9 @@ const KPICards = () => {
     
     if (loading) {
         return (
-        <div className="grid mobile-md:grid-cols-2 desktop-sm:grid-cols-4 gap-4">
+        <div className="grid mobile-md:grid-cols-2 desktop-sm:grid-cols-4 gap-[12px]">
             {Array.from({ length: 4 }).map((_, i) => (
-            <Skeleton key={i} className="h-28 w-full" />
+            <Skeleton key={i} className="h-[58px] w-full" />
             ))}
         </div>
         );
@@ -22,7 +22,7 @@ const KPICards = () => {
 
     if (!data) return null;
 
-    return(<div className="grid mobile-md:grid-cols-2 desktop-sm:grid-cols-4 gap-4">
+    return(<div className="grid mobile-md:grid-cols-2 desktop-sm:grid-cols-4 gap-[12px]">
         { data.kpis.map((kpi,idx)=>(
             <KPICard key={`KPI_Card_${kpi.label}_${idx}`}
                 label={kpi.label} trend={kpi.trend} trendDirection={kpi.trendDirection}

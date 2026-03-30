@@ -7,7 +7,11 @@ type Props = {
   value: number
   prefix?: string
 }
-
+const formatNumber = (num: number) => {
+  if (num >= 1_000_000) return (num / 1_000_000).toFixed(2) + "M"
+  if (num >= 1_000) return (num / 1_000).toFixed(1) + "K"
+  return num.toString()
+}
 const Counter = ({ value, prefix = "" }: Props) => {
   const [displayValue, setDisplayValue] = useState(0)
 
@@ -25,7 +29,7 @@ const Counter = ({ value, prefix = "" }: Props) => {
   return (
     <span>
       {prefix}
-      {displayValue.toLocaleString()}
+      {formatNumber(displayValue)}
     </span>
   )
 }

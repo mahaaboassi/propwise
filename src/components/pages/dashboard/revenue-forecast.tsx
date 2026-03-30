@@ -3,7 +3,7 @@
 import { Card } from "@/components/ui/card";
 import Header from "@/components/ui/header"
 import { Badge } from "@/components/ui/badge";
-import { TrendingUp } from "lucide-react";
+import { ArrowUpRight, TrendingUp } from "lucide-react";
 
 import {
   LineChart,
@@ -17,6 +17,14 @@ import {
 import { useEffect, useState } from "react";
 import { useDashboard } from "@/hooks/use-dashboard";
 import Skeleton from "./dashboard-skeleton";
+import Link from "next/link";
+
+
+const axisTickStyle = {
+  fill: "#A0A9BD",
+  fontSize: 11,
+  fontWeight: 400,
+}
 
 const RevenueForecast = () => {
     const [showThisYear, setShowThisYear] = useState(true);
@@ -24,50 +32,66 @@ const RevenueForecast = () => {
     const { loading, data, refetch } = useDashboard()
     useEffect(()=>{refetch()},[refetch])
   return (
-    <Card className="bg-[var(--content-inverted)] p-4 !gap-4">
-      <Header level={2} title="Revenue Forecast" className="!text-[var(--content-grey)]" />
+    <Card className="bg-[var(--bg-surface)] h-[347.98px] border-[#E1E4ED]  border-[0.77px] rounded-md flex flex-col gap-[16px]">
+      <div className="flex flex-col gap-[4px] px-[20px] mt-[15px]">
+        <div className="flex justify-between ">
+          <Header level={2} title="Revenue Forecast" className="text-[#686868] font-normal text-[14px] leading-[20.8px]" />
+          <Link
+            href="#"
+            className="link flex items-center justify-between w-[53.44px] font-heading
+                        text-[#3567FF] text-xs leading-[18px] font-semibold"
+          >
+            Report
+            <ArrowUpRight className="size-[12px]" />
+          </Link>
+        </div>
+        
 
-      {/* Top Section */}
-      {loading? <Skeleton className="h-10 w-1/2" /> :<div className="flex flex-wrap gap-2 items-center">
-        <span className="text-[var(--content-emphasis)] font-bold text-xl desktop-sm:text-4xl">
-          {data?.revenue.total}
-        </span>
+        {/* Top Section */}
+        {loading? <Skeleton className="h-10 w-1/2" /> :<div className="flex justify-between w-[313.56px] items-center">
+          <span className="text-[#091026] font-bold text-[28px] leading-[28px] font-heading">
+            {data?.revenue.total}
+          </span>
 
-        <Badge className="text-[var(--content-badge-up)] bg-[var(--bg-badge-up)] flex items-center gap-1 rounded-md">
-          <TrendingUp size={14} /> +{data?.revenue.trend}%
-        </Badge>
+          <Badge variant={"default"} className="text-[var(--content-badge-up)] bg-[var(--bg-badge-up)] flex items-center h-[14.67px] w-[54.56px]">
+            <TrendingUp className="size-[10px]" /> +{data?.revenue.trend}%
+          </Badge>
 
-        <span className="text-[var(--content-muted)] text-sm">
-          vs last year
-        </span>
-      </div>}
+          <span className="text-[#A0A9BD] text-xs leading-[18px] font-normal">
+            vs last year
+          </span>
+        </div>}
+      </div>
+
       {/* Control in Showing   */}
-      {loading? <div className="flex gap-4 ">
+
+      {loading? <div className="px-[20.76px] flex gap-[19.99px]">
         <Skeleton className="w-20 h-6" />
         <Skeleton className="w-20 h-6" />
-      </div> :<div className="flex gap-4 text-sm text-[var(--content-subtle)]">
+      </div> :<div className="flex gap-4 px-[20.76px] flex gap-[19.99px]
+                    font-medium text-[11px] text-[#6E7991] font-heading leading-[16.5px]">
             <div
                 onClick={() => setShowThisYear(!showThisYear)}
-                className={`flex items-center cursor-pointer gap-2 ${
-                showThisYear ? "opacity-100" : "opacity-40"
-                }`}
+                className={`flex items-center cursor-pointer gap-[6px] `}
             >
-                <span className="w-4 h-1.5 rounded-full bg-[var(--chart-1)]" />
+                 <span className={`w-[12px] h-[2.99px] rounded-[2.5px] ${
+                showThisYear ? "bg-[var(--chart-2)]" : "bg-[#E1E4ED]"
+                }`} />
                 This Year
             </div>
 
             <div
                 onClick={() => setShowLastYear(!showLastYear)}
-                className={`flex items-center cursor-pointer gap-2 ${
-                showLastYear ? "opacity-100" : "opacity-40"
-                }`}
+                className={`flex items-center cursor-pointer gap-[6px]`}
             >
-                <span className="w-4 h-1.5 rounded-full bg-[var(--chart-2)]" />
+                <span className={`w-[12px] h-[2.99px] rounded-[2.5px]  ${
+                showLastYear ? "bg-[var(--chart-2)]" : "bg-[#E1E4ED]"
+                }`} />
                 Last Year
             </div>
         </div>}
       {/* Chart */}
-      {loading? <Skeleton className="w-full h-52" /> : data && <div className="w-full h-[200px]">
+      {loading? <div className="px-[27px]"><Skeleton className="w-full h-[207px]" /></div> : data && <div className="w-full h-[207px] px-[27px]">
         <ResponsiveContainer width="100%" height="100%">
            <LineChart data={data?.revenue?.data}>
             <defs>
@@ -91,12 +115,13 @@ const RevenueForecast = () => {
               axisLine={false}
               tickLine={false}
               stroke="var(--content-muted)"
-              fontSize={12}
+              tick={axisTickStyle}
+              
             />
 
             <YAxis
                 stroke="var(--content-muted)"
-                fontSize={12}
+                tick={axisTickStyle}
                 axisLine={false}
                 tickLine={false}
                 width={40}
@@ -127,7 +152,7 @@ const RevenueForecast = () => {
             {showLastYear && <Line
               type="monotone"
               dataKey="lastYear"
-              stroke="var(--chart-2)"
+              stroke="var(--chart-3)"
               strokeWidth={2}
               strokeDasharray="4 4"
               dot={false}

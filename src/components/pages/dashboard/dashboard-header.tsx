@@ -6,14 +6,14 @@ import { useTheme } from "next-themes";
 
 const HeaderDashboard = ()=>{
   const { theme, setTheme } = useTheme()
-  return <div className="flex flex-col gap-5 tablet-md:flex-row justify-between">
+  return <div className="flex flex-col gap-5 tablet-md:flex-row justify-between items-center">
             <Header level={1} title="Dashboard" paragraph="Here's your pipeline health and sales activity at a glance." />
             <div className="flex gap-2">
-                <Button className="">
-                    <Plus className="" size={15}/> <span className="-mt-1">Create</span>
+                <Button variant={"default"}>
+                    <Plus className="size-[16px]"/> <span>Create</span>
                 </Button>
-                <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="">
-                    {theme === "dark" ? <Sun size={15} /> : <Moon size={15} /> } <span className="-mt-1">Theme</span>
+                <Button variant={"default"} onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="">
+                    {theme === "dark" ? <Sun className="size-[16px]"/> : <Moon className="size-[16px]"/> } <span>Theme</span>
                 </Button>
             </div>
         </div>

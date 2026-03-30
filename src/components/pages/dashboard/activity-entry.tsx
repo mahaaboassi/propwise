@@ -5,21 +5,22 @@ type Props = {
 }
 const ActivityEntryComponent = ({entry}:Props)=>{
     const Icon = entry.icon ? iconMap[entry.icon]  : null
-    return(<li className="px-4 relative">
-                <div className="flex flex-wrap items-center text-xs desktop-sm:text-sm ">
-                    <p className="text-[var(--content-info)] ">{entry.message}</p>
-                    {entry.highlights.map((highlight,index)=>(<span className="text-[var(--brand-bg-default)] font-medium" key={`Highlights_${highlight.text}_${index}`}>
+    return(<div className="flex flex-col gap-[2px] h-full justify-center border-l-2 border-[#F1F3F7] pl-[26px]">
+                <p className="flex flex-wrap items-center text-[#091026] leading-[18px] text-xs ">
+                    <span className="text-[var(--content-info)] font-normal">{entry.message}</span>
+                    {entry.highlights.map((highlight,index)=>(<span className="text-[#476CDC] font-bold" key={`Highlights_${highlight.text}_${index}`}>
                         &nbsp;{highlight.text}
                     </span>))}
-                </div>
+                </p>
                 
-                <div className="text-[var(--content-muted)] text-[0.7rem] desktop-sm:text-base">{entry.timestamp}</div>
+                <div className="text-[#A0A9BD] leading-[16.5px] text-[11px] font-normal">{entry.timestamp}</div>
                 {/* icon */}
                 {Icon && (
-                    <div className="absolute -left-3.5 flex-center top-1.5 w-7 h-7 rounded-full text-[var(--content-subtle)] bg-[var(--bg-muted)]">
-                        <Icon className="w-4 h-4" />
+                    <div className="absolute left-[19.99px] flex-center top-1/2 -translate-y-1/2 w-[27.99px] h-[27.99px] rounded-full text-[var(--content-subtle)] bg-[#FAFAFA]
+                                    shadow-[0px_0px_0px_3px_rgba(255, 255, 255, 1)]">
+                        <Icon className="size-[12.99px]" />
                     </div>
                 )}
-            </li>)
+            </div>)
 }
 export default ActivityEntryComponent

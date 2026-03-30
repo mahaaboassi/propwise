@@ -9,22 +9,24 @@ import { motion } from "framer-motion"
 
 const TasksPanel = ()=>{
     const { loading, data } = useDashboard()
-    return(<Card className="bg-[var(--content-inverted)] !gap-4">
-        <div className="p-4 border-b-2 border-[var(--border-default)] flex flex-col gap-2">
+    return(<Card className="bg-[var(--bg-surface)] border-[#E1E4ED] border-[0.77px] rounded-lg">
+        <div className="pt-[16px] px-[19.99px] h-[85px] border-b-[0.77px] border-[#F1F3F7] flex flex-col gap-[8px]">
             <div className="flex gap-2 flex-col desktop-sm:flex-row desktop-sm:items-center justify-between w-full ">
                 <Header
                 title="Tasks & Reminders"
-                className="!font-bold"
+                className="font-bold font-heading leading-[20.8px] text-sm"
                 level={2}/>
 
-                <div className="link desktop-sm:flex-center flex gap-2"
+                <div className="link flex items-center gap-[3px] 
+                                text-[#3567FF] text-xs leading-[18px] font-semibold"
                 >
-                <Plus size={17} /> Quick Add
+                <Plus className="size-[13.99px]"/> Quick Add
                 </div>
                 
             </div>
+
             {loading? <Skeleton className="h-12 w-full" /> : <div className="flex items-center gap-1">
-                {data?.tasks && <div className="flex-1 h-2 bg-[var(--bg-surface-opactity-2)] rounded-md ">
+                {data?.tasks && <div className="flex-1 h-[6px] bg-[#F1F3F7] rounded-[2.5px] ">
                     <motion.div
                     initial={{ width: 0 }}
                     whileInView={{
@@ -34,12 +36,12 @@ const TasksPanel = ()=>{
                     className="h-full bg-[var(--green-700)] rounded-md"
                     />
                 </div>}
-                <div className="text-xs font-medium text-[var(--content-muted)]">
+                <div className="text-xxs font-semibold leading-[15px] text-[#A0A9BD]">
                     {data?.tasks?.completed}/{data?.tasks?.total} done
                 </div>
             </div>}
         </div>
-        <ul className="px-4 flex flex-col gap-4">
+        <ul className="px-[19.99px] pt-[12px]">
             {loading ? Array.from({ length: 4 }).map((_,i)=><li key={`Sketlon_Task_${i}`}><Skeleton className="h-16 w-full" /></li>)
             : data?.tasks.items.map((task,i)=><TaskItem task={task} key={`Task_${task.title}_${i}`}/>)}
         </ul>

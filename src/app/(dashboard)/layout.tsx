@@ -9,19 +9,21 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
-      <div className="flex p-2 mobile-md:p-5">
-        <aside className="relative ">
+    <div className="bg-[var(--bg-muted)]">
+      <div className="">
+        <aside className="fixed w-[200px]">
           <Sidebar />
         </aside>
-        
-        <Card className="bg-[var(--content-inverted)] p-4 tablet-md:p-7 w-full mt-20 tablet-md:ml-5 tablet-md:mt-0">
-            <main>
-              {children}
-            </main>
-        </Card>
+        <div className="flex justify-end w-[1213px] left-[217px] pt-[11px] -top-[2px] relative">
+          <Card className="bg-[var(--bg-surface)] w-[1204px] mt-20 tablet-md:mt-0 border-[#E9E9E9] border-[1px] rounded-md ">
+              <main >
+                {children}
+              </main>
+          </Card>
+        </div>
+
 
       </div>
-    </>
+    </div>
   );
 }

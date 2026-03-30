@@ -12,7 +12,7 @@ export default function Home() {
         </div>
         <p className="font-medium text-center text-base mobile-md:text-xl">Welcome in our CRM Platform </p>
         <Link className="flex-center" href={"/dashboard"}>
-          <Button className="cursor-pointer text-base p-5">Go to Your Dashboard</Button>
+          <Button variant={"default"}>Go to Your Dashboard</Button>
         </Link>
       </Card>
     </main>

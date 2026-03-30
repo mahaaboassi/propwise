@@ -107,7 +107,7 @@ const DateFilterTabs = () => {
     <div>
       <ul
         role="tablist"
-        className="flex gap-2 p-1.5 h-[50px] bg-[var(--bg-subtle)] whitespace-nowrap overflow-x-auto w-full rounded-xl mobile-md:w-fit text-xs mobile-md:text-sm tablet-md:text-base font-normal text-[#9CA3AF]"
+        className="flex h-[35px] p-[4px] text-[13px] leading-[20px] font-[550] bg-[var(--bg-subtle)] whitespace-nowrap overflow-x-auto w-full rounded-sm mobile-md:w-fit text-[#9CA3AF]"
       >
         {dates.map((date, idx) => (
           <li key={date.value}>
@@ -120,13 +120,14 @@ const DateFilterTabs = () => {
               tabIndex={currentDate === idx ? 0 : -1}
               onClick={() => change(idx, date)}
               onKeyDown={(e) => handleKeyDown(e, idx)}
-              className={`hover:!bg-[var(--bg-surface)] h-full !text-[#9CA3AF]
-                px-2 mobile-md:px-4 tablet-md:px-6 rounded-md flex-center cursor-pointer transition-all duration-300
+              className={`hover:!bg-[var(--bg-surface)] 
+                rounded-[6px] flex-center cursor-pointer transition-all duration-300
                 ${
                   currentDate === idx
-                    ? "text-[var(--content-emphasis)] bg-[var(--bg-surface)]"
+                    ? "text-[var(--content-emphasis)] shadow-[0px_1px_3px_0px_rgba(0,0,0,0.1),0px_0px_2px_0px_rgba(0,0,0,0.06)] bg-[var(--bg-default)]"
                     : "hover:text-[var(--content-subtle)]"
                 }
+                h-full !text-[#9CA3AF] w-[91.67px] h-[27px]
                 focus:outline-none focus:ring-1 focus:ring-[var(--content-subtle)]
               `}
             >

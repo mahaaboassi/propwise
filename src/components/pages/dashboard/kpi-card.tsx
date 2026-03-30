@@ -26,12 +26,14 @@ const KPICard = ({
     down: "text-[var(--content-badge-down)] bg-[var(--bg-badge-down)]",
   }
   return (
-    <div style={{ boxShadow: "var(--drop-shadow)" }} className="flex justify-between items-center bg-[var(--content-inverted)] rounded-xl p-4"> 
+    <div className="flex justify-between items-center bg-[var(--bg-surface)] rounded-md w-[277px] h-[58px]
+            shadow-[0px_1px_0px_rgba(26,26,26,0),0px_1px_0px_rgba(204,204,204,0.4),0px_-1px_0px_rgba(0,0,0,0.07),-1px_0px_0px_rgba(0,0,0,0.03),1px_0px_0px_rgba(0,0,0,0.03)] py-[12px] px-[16px]
+    "> 
       {/* Left */}
-      <div className="flex flex-col gap-1">
-        <h2 className="text-sm text-[var(--content-subtle)]">{label}</h2>
+      <div className="flex flex-col ">
+        <h2 className="text-xs font-[450] text-[#5F5F5F] leading-[20px]">{label}</h2>
         {/* Counter for Values */}
-        <div className="text-[var(--content-emphasis)] font-bold text-lg desktop-sm:text-2xl">
+        <div className="text-[#000000] font-[650] text-base leading-[20px]">
           <Counter
             value={Number(value)}
             prefix={label === "Revenue YTD" ? "AED " : ""}
@@ -40,14 +42,14 @@ const KPICard = ({
       </div>
 
       {/* Right */}
-      <div className="flex flex-col items-end gap-1">
+      <div className="flex flex-col items-end">
 
         {/* Sparkline */}
        <SparklineChart trendDirection={trendDirection} data={formattedData}/>
 
         {/* Badge */}
-          <Badge className={`${positionStyles[trendDirection]} flex items-center gap-1 rounded-md`}>
-            {trendDirection === "down" ? <TrendingDown/>:<TrendingUp size={14} />} {trend}%
+          <Badge variant="default" className={`${positionStyles[trendDirection]} flex items-center h-[14.67px] w-[54.56px]`}>
+            {trendDirection === "down" ? <TrendingDown className="size-[10px]"/>:<TrendingUp className="size-[10px]" />} {trendDirection === "up" && "+"}{trend}%
           </Badge>
       </div>
     </div>

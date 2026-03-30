@@ -2,30 +2,34 @@ import { ActivityFeed, DateFilterTabs, FixedInDashboard, HeaderDashboard, KPICar
 import { Suspense } from "react"
 
 const Dashboard = () =>{
-    return(<div className="space-y-5">
-        <HeaderDashboard/>
-        {/* Required for useSearchParams() (Next.js client-side hydration) */}
-        <Suspense fallback={null}>
-            <DateFilterTabs />
-        </Suspense>
+    return(<div className="pt-[25px]">
+        <div className="px-[30px] space-y-[26px]">
+            <div className="flex flex-col gap-[18px]">
+                <HeaderDashboard/>
+                {/* Required for useSearchParams() (Next.js client-side hydration) */}
+                <Suspense fallback={null}>
+                    <DateFilterTabs />
+                </Suspense>
+            </div>
+            <KPICards/>
+            <div className="flex gap-[26px] w-full">
+                <div className="w-[718px]">
+                    <RevenueForecast/>
+                </div>
+                <div className="w-[400px]">
+                    <ActivityFeed/>
+                </div>
+            </div>
+            <div className="flex gap-[26px] w-full">
+                <div className="w-[718px]">
+                    <PipelineSummary/>
+                </div>
+                <div className="w-[400px]">
+                    <TasksPanel/>
+                </div>
+            </div>
+        </div>
 
-        <KPICards/>
-        <div className="grid grid-cols-3 gap-4">
-            <div className="col-span-3 mobile-md:col-span-2">
-                <RevenueForecast/>
-            </div>
-            <div className="col-span-3 mobile-md:col-span-1">
-                <ActivityFeed/>
-            </div>
-        </div>
-        <div className="grid grid-cols-3 gap-4">
-            <div className="col-span-3 mobile-md:col-span-2">
-                <PipelineSummary/>
-            </div>
-            <div className="col-span-3 mobile-md:col-span-1">
-                <TasksPanel/>
-            </div>
-        </div>
         <FixedInDashboard/>
     </div>
  )
