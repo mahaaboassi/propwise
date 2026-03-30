@@ -31,9 +31,9 @@ const KPICard = ({
     "> 
       {/* Left */}
       <div className="flex flex-col ">
-        <h2 className="text-xs font-[450] text-[#5F5F5F] leading-[20px]">{label}</h2>
+        <h2 className="text-xxs tablet-md:text-xs font-[450] text-[#5F5F5F] leading-[20px]">{label}</h2>
         {/* Counter for Values */}
-        <div className="text-[var(--black)] font-[650] text-base leading-[20px]">
+        <div className="text-[var(--black)] font-[650] text-xs mobile-md:text-sm tablet-md:text-base leading-[20px]">
           <Counter
             value={Number(value)}
             prefix={label === "Revenue YTD" ? "AED " : ""}

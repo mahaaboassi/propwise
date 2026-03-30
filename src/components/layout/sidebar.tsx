@@ -25,7 +25,7 @@ const Sidebar = () => {
   }
 
   return (
-    <nav className="flex flex-col gap-[12px] w-[224px] tablet-md:sticky top-0">
+    <nav className="flex flex-col gap-[12px] tablet-md:sticky top-0">
       {/* Top Bar */}
       <SidebarHeader onClick={()=>setOpenMenuSmallSize(true)}/>
 
@@ -38,7 +38,7 @@ const Sidebar = () => {
             exit={{ width: 0 }}
             transition={{ duration: 0.3,   }}
             className={`div-scroll overflow-y-auto h-screen tablet-md:h-[calc(100vh-200px)] flex-col tablet-md:!w-[224px] w-full gap-1 text-sm font-medium
-            ${openMenuSmallSize ? "fixed top-0 px-4 bottom-0 right-0 overflow-hidden bg-[var(--content-inverted)] shadow z-50 pt-5 pl-4" : "hidden px-[12px] tablet-md:flex"}`}
+            ${openMenuSmallSize ? "fixed top-0 px-4 bottom-0 right-0 overflow-hidden bg-[var(--content-inverted)] shadow z-[100] pt-5 pl-4" : "hidden px-[12px] tablet-md:flex"}`}
           >
 
             {/* Close */}

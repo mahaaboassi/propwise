@@ -6,7 +6,7 @@ type Props = {
 const ActivityEntryComponent = ({entry}:Props)=>{
     const Icon = entry.icon ? iconMap[entry.icon]  : null
     return(<div className="flex flex-col gap-[2px] h-full justify-center border-l-2 border-[#F1F3F7] pl-[26px]">
-                <p className="flex flex-wrap items-center text-[var(--custom-surface)] leading-[18px] text-xs ">
+                <p className="flex flex-wrap items-center text-[var(--custom-surface)] leading-[18px] text-xxs tablet-sm:text-xs ">
                     <span className="font-semibold">{entry?.highlights[0].text}</span>
                     <span className="text-[var(--content-info)] font-normal">&nbsp;{entry.message}</span>
                     <span className="text-[#476CDC] font-bold">&nbsp;{entry?.highlights[1].text}</span>

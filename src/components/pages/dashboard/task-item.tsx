@@ -50,7 +50,7 @@ const TaskItem = ({ task }: Props) => {
     setIsChecked(!!val)
   }
   return (
-    <li className="flex  justify-between gap-[12px] h-[65.94px]">
+    <li className="flex justify-between gap-[12px] h-[65.94px]">
       
       <FieldGroup>
         <Field className="items-start" orientation="horizontal">
@@ -58,7 +58,7 @@ const TaskItem = ({ task }: Props) => {
             id={checkboxId}
             checked={isChecked}
             onCheckedChange={(val:boolean) => changeValue(val)}
-            className="rounded-full h-[17.99px] w-[17.99px]"
+            className="rounded-full h-[17.99px] w-[17.99px] text-white"
           />
 
           <div className="flex flex-col gap-[3.99px]">

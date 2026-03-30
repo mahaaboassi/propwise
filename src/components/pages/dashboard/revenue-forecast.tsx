@@ -35,7 +35,7 @@ const RevenueForecast = () => {
     <Card className="bg-[var(--bg-default)] h-[347.98px] border-[var(--custom-border)]  border-[0.77px] rounded-md flex flex-col gap-[16px]">
       <div className="flex flex-col gap-[4px] px-[20px] mt-[15px]">
         <div className="flex justify-between ">
-          <Header level={2} title="Revenue Forecast" className="text-[#686868] font-normal text-[14px] leading-[20.8px]" />
+          <Header level={2} title="Revenue Forecast" className="text-[#686868] font-normal text-sm tablet-md:text-[14px] leading-[20.8px]" />
           <Link
             href="#"
             className="link flex items-center justify-between w-[53.44px] font-heading
@@ -48,8 +48,8 @@ const RevenueForecast = () => {
         
 
         {/* Top Section */}
-        {loading? <Skeleton className="h-10 w-1/2" /> :<div className="flex justify-between w-[313.56px] items-center">
-          <span className="text-[var(--custom-surface)] font-bold text-[28px] leading-[28px] font-heading">
+        {loading? <Skeleton className="h-10 w-1/2" /> :<div className="flex flex-wrap tablet-md:justify-between gap-[2px] tablet-md:gap-0 tablet-md:w-[313.56px] items-center">
+          <span className="text-[var(--custom-surface)] font-bold text-[20px] tablet-md:text-[28px] leading-[28px] font-heading">
             {data?.revenue.total}
           </span>
 

@@ -107,7 +107,7 @@ const DateFilterTabs = () => {
     <div>
       <ul
         role="tablist"
-        className="flex h-[35px] p-[4px] text-[13px] leading-[20px] font-[550] bg-[var(--bg-subtle)] whitespace-nowrap overflow-x-auto w-full rounded-sm mobile-md:w-fit text-[#9CA3AF]"
+        className="flex h-[35px] p-[4px] text-xs desktop-md:text-[13px] leading-[20px] font-[550] bg-[var(--bg-subtle)] whitespace-nowrap overflow-x-auto w-full rounded-sm mobile-md:w-fit text-[#9CA3AF]"
       >
         {dates.map((date, idx) => (
           <li key={date.value}>
@@ -127,7 +127,7 @@ const DateFilterTabs = () => {
                     ? "text-[var(--content-emphasis)] shadow-[0px_1px_3px_0px_rgba(0,0,0,0.1),0px_0px_2px_0px_rgba(0,0,0,0.06)] bg-[var(--bg-default)]"
                     : "hover:text-[var(--content-subtle)]"
                 }
-                h-full !text-[#9CA3AF] w-[91.67px] h-[27px]
+                h-full !text-[#9CA3AF] w-[80px] desktop-md:w-[91.67px] h-[27px]
                 focus:outline-none focus:ring-1 focus:ring-[var(--content-subtle)]
               `}
             >

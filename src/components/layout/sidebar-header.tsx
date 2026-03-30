@@ -32,8 +32,8 @@ const ItemMenu = ({icon, name, badge }: ItemProps) => {
         </div>)
 }
 const SidebarHeader = ({onClick}: Props)=>{
-    return(<div className="fixed z-50 left-0 right-0 top-0 bg-[var(--content-inverted)] flex items-center
-                      tablet-md:shadow-none tablet-md:bg-background tablet-md:p-0 tablet-md:items-start tablet-md:static tablet-md:flex-col">
+    return(<div className="fixed z-[100] tablet-md:static left-0 right-0 top-0 bg-[var(--content-inverted)] flex items-center
+                      shadow-md tablet-md:shadow-none tablet-md:bg-background tablet-md:p-0 tablet-md:items-start tablet-md:static tablet-md:flex-col">
 
         {/* Avatar */}
         <div className="pt-[16px] px-[12px] pb-[12px] h-[72px] w-full">
@@ -73,7 +73,7 @@ const SidebarHeader = ({onClick}: Props)=>{
                 </div>
             </PopoverTrigger>
             <PopoverContent side="bottom" align="start" sideOffset={8} alignOffset={0} 
-                className="w-[231.25px] h-[233.27px] !gap-0 rounded-lg outline-none !p-0 bg-[#FFFFFF] shadow-[0px_-1px_4px_0px_rgba(18,32,76,0.05),0px_-6px_28px_0px_rgba(18,32,76,0.1)]">
+                className="mt-[7px] tablet-md:mt-0 w-[231.25px] h-[233.27px] !gap-0 rounded-lg outline-none !p-0 bg-[#FFFFFF] shadow-[0px_-1px_4px_0px_rgba(18,32,76,0.05),0px_-6px_28px_0px_rgba(18,32,76,0.1)]">
                   <div className="flex items-center gap-[8px] h-[56.5px] px-[12px] border-b-[0.77px] border-[#F0F1F5]">
                       <div className="w-[31.49px] h-[32px] !rounded-xl overflow-hidden">
                         <Image className="object-contain" width={100} height={100} alt="logo" src={"/images/company_logo_2.png" } />
@@ -126,12 +126,12 @@ const SidebarHeader = ({onClick}: Props)=>{
 
 
         {/* Mobile Buttons */}
-        <div className="flex tablet-md:hidden gap-1">
+        <div className="flex tablet-md:hidden gap-1 mr-[9px]">
           <div onClick={onClick} className="icon-cover flex-center">
-            <TextAlignJustify />
+            <TextAlignJustify className="size-[10px]" />
           </div>
           <div className="icon-cover flex-center">
-            <Search />
+            <Search className="size-[10px]" />
           </div>
         </div>
       </div>)

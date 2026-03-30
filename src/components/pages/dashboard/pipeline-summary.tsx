@@ -21,7 +21,7 @@ const PipelineSummary = () => {
   return (
     <Card className="bg-[var(--bg-default)] border-[var(--custom-border)] border-[0.77px] rounded-md
             shadow-[0px_1px_0px_rgba(26,26,26,0),0px_1px_0px_rgba(204,204,204,0.4),0px_-1px_0px_rgba(0,0,0,0.07),-1px_0px_0px_rgba(0,0,0,0.03),1px_0px_0px_rgba(0,0,0,0.03)] 
-            p-[20px] gap-[26px]">
+            p-[20px] gap-[20px] tablet-md:gap-[26px]">
 
       <div className="flex gap-2 flex-col desktop-sm:flex-row justify-between w-full">
         <Header
@@ -50,7 +50,7 @@ const PipelineSummary = () => {
               );
           return (
             <div key={`Stage_${stage.stage}_${idx}`} className="flex flex-col gap-[2px] tablet-md:flex-row tablet-md:gap-2 tablet-md:items-center">
-              <div className="w-[87.99px] flex justify-end font-medium leading-[18px] text-xs text-[#3D4A65]">{stage.stage}</div>
+              <div className="w-[87.99px] flex tablet-md:justify-end font-medium leading-[18px] text-xs text-[#3D4A65]">{stage.stage}</div>
               <div className="flex-1">
                 <motion.div
                     className="bg-[var(--brand-800)] h-[29.99px] py-[3px] pl-[3px] rounded-xs"
@@ -60,8 +60,8 @@ const PipelineSummary = () => {
                     transition={{ duration: 0.6, ease: "easeOut" }}
                 >
                   <div style={{background:"rgba(255, 255, 255, 0.2)"}} className="font-heading w-fit py-[3px] px-[6px]  h-full flex items-center gap-[8px] rounded-xs ">
-                    <span className="font-bold text-xs leading-[18px] text-[#FFFFFF]">{stage.count}</span>
-                    <span style={{color: "rgba(255,255,255,0.7)"}} className="font-medium text-[11px] leading-[16.5px]">{stage.currency} {calculateNumber(stage.value)}</span>
+                    <span className="font-bold text-xxs mobile-md:text-xs leading-[18px] text-[#FFFFFF]">{stage.count}</span>
+                    <span style={{color: "rgba(255,255,255,0.7)"}} className="font-medium text-[8px] mobile-md:text-[11px] leading-[16.5px]">{stage.currency} {calculateNumber(stage.value)}</span>
                   </div>
                 </motion.div>
               </div>

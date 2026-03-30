@@ -11,7 +11,7 @@ export default function DashboardLayout({
   return (
     <div className="bg-[var(--bg-muted)]">
       <div className="">
-        <aside className="fixed w-[200px]">
+        <aside className="fixed w-[224px] z-[100] tablet-md:z-0">
           <Sidebar />
         </aside>
         {/* 
@@ -28,7 +28,10 @@ export default function DashboardLayout({
             Card = fills wrapper width minus 9px gap
         */}
         {/* ---- layout Dashboard */}
-        <div className="flex justify-end pl-[9px] w-[calc(100vw - 217px )] mr-[10px] ml-[217px] pt-[11px] -top-[2px] relative">
+                {/* <div className="flex pl-[9px] mr-[10px] pt-[11px] -top-[2px] relative 
+                         justify-end ml-[217px] w-[calc(100vw-(217px+20px))]"> */}
+        <div className="flex pr-[9px] pl-[9px]  mr-[10px] pt-[11px] -top-[2px] tablet-md:relative 
+                        tablet-md:px-0 tablet-md:justify-end tablet-md:ml-[217px] w-[calc(100vw-(217px+20px))]">
           {/* ---- Content Dashboard  */}
           <Card className="bg-[var(--bg-default)] w-full mt-20 tablet-md:mt-0 border-[#E9E9E9] border-[1px] rounded-md ">
               <main >
