@@ -50,7 +50,7 @@ const PipelineSummary = () => {
               );
           return (
             <div key={`Stage_${stage.stage}_${idx}`} className="flex flex-col gap-[2px] tablet-md:flex-row tablet-md:gap-2 tablet-md:items-center">
-              <div className="w-[87.99px] flex tablet-md:justify-end font-medium leading-[18px] text-xs text-[#3D4A65]">{stage.stage}</div>
+              <div className="w-[87.99px] flex desktop-sm:justify-end font-medium leading-[18px] text-xs text-[#3D4A65]">{stage.stage}</div>
               <div className="flex-1">
                 <motion.div
                     className="bg-[var(--brand-800)] h-[29.99px] py-[3px] pl-[3px] rounded-xs"

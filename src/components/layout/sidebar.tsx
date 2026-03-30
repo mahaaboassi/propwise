@@ -37,7 +37,7 @@ const Sidebar = () => {
             animate={{ width: openMenuSmallSize ? 224 : 0 }}
             exit={{ width: 0 }}
             transition={{ duration: 0.3,   }}
-            className={`div-scroll overflow-y-auto h-screen tablet-md:h-[calc(100vh-200px)] flex-col tablet-md:!w-[224px] w-full gap-1 text-sm font-medium
+            className={`div-scroll overflow-y-auto h-screen tablet-md:h-[calc(100vh-200px)] flex-col tablet-md:!w-[224px] w-full gap-[12px] text-sm font-medium
             ${openMenuSmallSize ? "fixed top-0 px-4 bottom-0 right-0 overflow-hidden bg-[var(--content-inverted)] shadow z-[100] pt-5 pl-4" : "hidden px-[12px] tablet-md:flex"}`}
           >
 

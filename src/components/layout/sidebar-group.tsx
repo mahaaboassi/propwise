@@ -50,14 +50,14 @@ const SidebarGroup = ({ item, pathname, openItems, toggleItem }: SidebarGroupPro
                 </CollapsibleTrigger>
 
                 {hasChildren && (
-                  <CollapsibleContent className="ml-6 item-nav flex flex-col gap-[2px] ">
+                  <CollapsibleContent className="ml-6 flex flex-col ">
                     {child?.children && child?.children.map((sub: SidebarSubChild) => {
                       const isSubActive = pathname === sub.link
 
                       return (
                         <div
                           key={`${sub.name}_Sub_child_Sidebar`}
-                          className={`item-menu text-sm ${isSubActive ? "active" : ""}`}
+                          className={`item-menu item-nav text-sm ${isSubActive ? "active" : ""}`}
                         >
                           {sub.name}
                         </div>

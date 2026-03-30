@@ -261,6 +261,9 @@
     .icon-menu{
        @apply text-[var(--stone-500)] size-[16px];
     }
+    .item-nav{
+      @apply h-[32px]
+    }
     .item-menu.active{
       @apply bg-[var(--brand-50)] text-[var(--brand-700)];
     }

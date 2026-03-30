@@ -15,7 +15,7 @@ export default function DashboardLayout({
           <Sidebar />
         </aside>
         {/* 
-          1- For layout Dashboard => how I got w-[calc(100vw - (217px + 10px))] =>
+          1- For layout Dashboard 
             Fixed Figma Value ( 1213px )
             100vw Full Width
             217 from margin left
@@ -28,10 +28,9 @@ export default function DashboardLayout({
             Card = fills wrapper width minus 9px gap
         */}
         {/* ---- layout Dashboard */}
-                {/* <div className="flex pl-[9px] mr-[10px] pt-[11px] -top-[2px] relative 
-                         justify-end ml-[217px] w-[calc(100vw-(217px+20px))]"> */}
-        <div className="flex pr-[9px] pl-[9px] w-full  mr-[10px] pt-[11px] -top-[2px] tablet-md:relative 
-                        tablet-md:px-0 tablet-md:justify-end tablet-md:ml-[217px] tablet-md:w-[calc(100vw-(217px+20px))]">
+        <div className="flex pr-[9px] pl-[9px] pt-[11px] -top-[2px] relative 
+                        tablet-md:justify-end tablet-md:mr-[10px] tablet-md:pr-[0px] 
+                       tablet-md:ml-[217px] tablet-md:flex-1">
           {/* ---- Content Dashboard  */}
           <Card className="bg-[var(--bg-default)] w-full mt-20 tablet-md:mt-0 border-[#E9E9E9] border-[1px] rounded-md ">
               <main >

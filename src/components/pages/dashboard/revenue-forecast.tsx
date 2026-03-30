@@ -48,8 +48,8 @@ const RevenueForecast = () => {
         
 
         {/* Top Section */}
-        {loading? <Skeleton className="h-10 w-1/2" /> :<div className="flex flex-wrap tablet-md:justify-between gap-[2px] tablet-md:gap-0 tablet-md:w-[313.56px] items-center">
-          <span className="text-[var(--custom-surface)] font-bold text-[20px] tablet-md:text-[28px] leading-[28px] font-heading">
+        {loading? <Skeleton className="h-10 w-1/2" /> :<div className="flex flex-wrap desktop-sm:justify-between gap-[2px] desktop-sm:gap-0 desktop-sm:w-[313.56px] items-center">
+          <span className="text-[var(--custom-surface)] font-bold text-[20px] desktop-sm:text-[28px] leading-[28px] font-heading">
             {data?.revenue.total}
           </span>
 

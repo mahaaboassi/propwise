@@ -17,18 +17,18 @@ const Dashboard = () =>{
                 400px it's 34.96% from 1144px => w-[34.96%]
              */}
             <div className="flex flex-col mobile-md:flex-row gap-[16px] desktop-md:gap-[26px] w-full">
-                <div className="w-full mobile-md:w-[50%] tablet-md:w-[62.76%]">
+                <div className="w-full mobile-md:w-[50%] desktop-sm:w-[62.76%]">
                     <RevenueForecast/>
                 </div>
-                <div className="w-full mobile-md:w-[50%] tablet-md:w-[34.96%]">
+                <div className="w-full mobile-md:w-[50%] desktop-sm:w-[34.96%]">
                     <ActivityFeed/>
                 </div>
             </div>
-            <div className="flex flex-col tablet-md:flex-row gap-[16px] desktop-md:gap-[26px] w-full">
-                <div className="w-full tablet-md:w-[62.76%]">
+            <div className="flex flex-col desktop-sm:flex-row gap-[16px] desktop-md:gap-[26px] w-full">
+                <div className="w-full desktop-sm:w-[62.76%]">
                     <PipelineSummary/>
                 </div>
-                <div className="w-full tablet-md:w-[34.96%]">
+                <div className="w-full desktop-sm:w-[34.96%]">
                     <TasksPanel/>
                 </div>
             </div>
