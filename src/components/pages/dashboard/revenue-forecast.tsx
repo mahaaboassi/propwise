@@ -6,8 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight, TrendingUp } from "lucide-react";
 
 import {
-  LineChart,
-  Line,
+  AreaChart, 
+  Area,
   ResponsiveContainer,
   XAxis,
   YAxis,
@@ -89,23 +89,18 @@ const RevenueForecast = () => {
                 <span className={`w-[12px] h-[2.99px] rounded-[2.5px]  ${
                 showLastYear ? "bg-[var(--chart-2)]" : "bg-[var(--custom-border)]"
                 }`} />
-                Last Year
+                Last Yearm
             </div>
         </div>}
       {/* Chart */}
       {loading? <div className="px-[27px]"><Skeleton className="w-full h-[207px]" /></div> : data && <div className="w-full h-[207px] px-[27px]">
         <ResponsiveContainer width="100%" height="100%">
-           <LineChart data={data?.revenue?.data}>
+           <AreaChart data={data?.revenue?.data}>
             <defs>
-            <filter id="lineShadow" x="-0.5%" y="0%" width="200%" height="300%">
-                <feDropShadow 
-                dx="0" 
-                dy="17" 
-                stdDeviation="15" 
-                floodColor="#000" 
-                floodOpacity="1" 
-                />
-            </filter>
+              <linearGradient id="colorThisYear" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#3567FF" stopOpacity={0.1}/>
+                <stop offset="95%" stopColor="#3567FF" stopOpacity={0}/>
+              </linearGradient>
             </defs>
            <CartesianGrid
                 stroke="#e7e8ec"
@@ -139,9 +134,9 @@ const RevenueForecast = () => {
                 borderRadius: "8px",
             }}
             labelStyle={{ color: "var(--content-emphasis)" }} />
-
+ 
             {/* This Year */}
-            { showThisYear && <Line
+            { showThisYear && <Area
               type="monotone"
               dataKey="thisYear"
               stroke="var(--chart-1)"
@@ -150,8 +145,8 @@ const RevenueForecast = () => {
               style={{ filter: "url(#lineShadow)" }}
             />}
 
-            {/* Last Year */}
-            {showLastYear && <Line
+            {/* Last Year here */}
+            {showLastYear && <Area
               type="monotone"
               dataKey="lastYear"
               stroke="var(--chart-3)"
@@ -159,7 +154,7 @@ const RevenueForecast = () => {
               strokeDasharray="4 4"
               dot={false}
             />}
-          </LineChart>
+          </AreaChart>
         </ResponsiveContainer>
       </div>}
     </Card>
