@@ -106,7 +106,7 @@ const RevenueForecast = () => {
             </filter>
             </defs>
            <CartesianGrid
-                stroke="#dadee8"
+                stroke="#e7e8ec"
                 strokeDasharray="3 3"
                 vertical={false}
                 /> 
