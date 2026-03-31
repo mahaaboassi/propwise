@@ -48,18 +48,20 @@ const RevenueForecast = () => {
         
 
         {/* Top Section */}
-        {loading? <Skeleton className="h-10 w-1/2" /> :<div className="flex flex-wrap desktop-sm:justify-between gap-[2px] desktop-sm:gap-0 desktop-sm:w-[313.56px] items-end">
+        {loading? <Skeleton className="h-10 w-1/2" /> :<div className="flex flex-wrap justify-between gap-[10px] w-fit">
           <span className="text-[var(--custom-surface)] font-bold text-[20px] desktop-sm:text-[28px] leading-[28px] font-heading">
             {data?.revenue.total}
           </span>
 
-          <Badge variant={"default"} className="text-[var(--content-badge-up)] bg-[var(--bg-badge-up)] flex items-center h-[14.67px] ">
-            <TrendingUp className="size-[10px]" /> +{data?.revenue.trend}%
-          </Badge>
+          <div className="flex gap-[4px] items-end">
+              <Badge variant={"default"} className="text-[var(--content-badge-up)] bg-[var(--bg-badge-up)] flex items-center h-[14.67px] ">
+              <TrendingUp className="size-[10px]" /> +{data?.revenue.trend}%
+            </Badge>
 
-          <span className="text-[#A0A9BD] text-xs leading-[18px] font-normal">
-            vs last year
-          </span>
+            <span className="text-[#A0A9BD] text-xs leading-[18px] font-normal">
+              vs last year
+            </span>
+          </div>
         </div>}
       </div>
 
