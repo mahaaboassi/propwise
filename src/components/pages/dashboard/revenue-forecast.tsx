@@ -142,6 +142,7 @@ const RevenueForecast = () => {
               stroke="var(--chart-1)"
               strokeWidth={2}
               dot={false}
+              fill="url(#colorThisYear)"
               style={{ filter: "url(#lineShadow)" }}
             />}
 
@@ -151,6 +152,7 @@ const RevenueForecast = () => {
               dataKey="lastYear"
               stroke="var(--chart-3)"
               strokeWidth={2}
+              fill="url(#colorThisYear)"
               strokeDasharray="4 4"
               dot={false}
             />}
