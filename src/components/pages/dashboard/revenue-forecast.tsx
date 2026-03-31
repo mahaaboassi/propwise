@@ -89,7 +89,7 @@ const RevenueForecast = () => {
                 <span className={`w-[12px] h-[2.99px] rounded-[2.5px]  ${
                 showLastYear ? "bg-[var(--chart-2)]" : "bg-[var(--custom-border)]"
                 }`} />
-                Last Yearm
+                Last Year
             </div>
         </div>}
       {/* Chart */}
@@ -100,6 +100,12 @@ const RevenueForecast = () => {
               <linearGradient id="colorThisYear" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#3567FF" stopOpacity={0.1}/>
                 <stop offset="95%" stopColor="#3567FF" stopOpacity={0}/>
+              </linearGradient>
+            </defs>
+            <defs>
+              <linearGradient id="colorLastYear" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#808080" stopOpacity={0.1}/>
+                <stop offset="95%" stopColor="#aeaeb0" stopOpacity={0}/>
               </linearGradient>
             </defs>
            <CartesianGrid
@@ -143,16 +149,15 @@ const RevenueForecast = () => {
               strokeWidth={2}
               dot={false}
               fill="url(#colorThisYear)"
-              style={{ filter: "url(#lineShadow)" }}
             />}
 
-            {/* Last Year here */}
+            {/* Last Year  */}
             {showLastYear && <Area
               type="monotone"
               dataKey="lastYear"
               stroke="var(--chart-3)"
               strokeWidth={2}
-              fill="url(#colorThisYear)"
+              fill="url(#colorLastYear)"
               strokeDasharray="4 4"
               dot={false}
             />}
