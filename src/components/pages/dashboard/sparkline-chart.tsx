@@ -8,7 +8,7 @@ type Props = {
 }
 const SparklineChart = ({data,trendDirection}: Props)=>{
     return  <ResponsiveContainer width={55} height={16.65}>
-          <LineChart data={data}>
+          <LineChart margin={{ top: 0, right: 0, left: 0, bottom: 0 }} data={data}>
             <defs>
             <filter id="lineShadowSpark" x="0%" y="-10%" width="140%" height="140%">
                 <feDropShadow 
@@ -16,7 +16,7 @@ const SparklineChart = ({data,trendDirection}: Props)=>{
                 dy="8" 
                 stdDeviation="6" 
                 floodColor="#000" 
-                floodOpacity="0.3" 
+                floodOpacity="0.5" 
                 />
             </filter>
             </defs>

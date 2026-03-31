@@ -30,7 +30,7 @@ const KPICard = ({
             shadow-[0px_1px_0px_rgba(26,26,26,0),0px_1px_0px_rgba(204,204,204,0.4),0px_-1px_0px_rgba(0,0,0,0.07),-1px_0px_0px_rgba(0,0,0,0.03),1px_0px_0px_rgba(0,0,0,0.03)] py-[12px] px-[16px]
     "> 
       {/* Left */}
-      <div className="flex flex-col ">
+      <div className="flex flex-col">
         <h2 className="text-xxs tablet-md:text-xs font-[450] text-[#5F5F5F] leading-[12px] tablet-md:leading-[20px]">{label}</h2>
         {/* Counter for Values */}
         <div className="text-[var(--black)] font-[650] text-xs mobile-md:text-sm tablet-md:text-base leading-[20px]">
@@ -42,13 +42,13 @@ const KPICard = ({
       </div>
 
       {/* Right */}
-      <div className="flex flex-col items-end">
+      <div className="flex flex-col gap-[6px] items-end">
 
         {/* Sparkline */}
        <SparklineChart trendDirection={trendDirection} data={formattedData}/>
 
         {/* Badge */}
-          <Badge variant="default" className={`${positionStyles[trendDirection]} flex items-center h-[14.67px] w-[54.56px]`}>
+          <Badge variant="default" className={`${positionStyles[trendDirection]} flex items-center h-[14.67px] `}>
             {trendDirection === "down" ? <TrendingDown className="size-[10px]"/>:<TrendingUp className="size-[10px]" />} {trendDirection === "up" && "+"}{trend}%
           </Badge>
       </div>

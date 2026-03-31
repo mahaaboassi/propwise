@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: `cursor-pointer
-        bg-[var(--brand-700)]
+        bg-[var(--brand-600)]
         text-[var(--brand-50)]
         hover:!bg-[var(--brand-800)]
         transition-all duration-300`,

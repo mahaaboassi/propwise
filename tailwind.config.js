@@ -70,6 +70,7 @@ module.exports = {
         /* Brand (from your variables) */
         brand: {
           50: "var(--brand-50)",
+          600: "var(--brand-600)",
           700: "var(--brand-700)",
           800: "var(--brand-800)",
         },

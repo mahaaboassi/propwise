@@ -37,34 +37,34 @@ const DashboardDataMock = {
       value: "248",
       trend: 12.4,
       trendDirection: "up",
-      sparklineData: [10, 20, 15, 30, 25, 40, 35],
+      sparklineData: [35, 55, 45, 65, 55, 75, 65, 85, 75, 85, 95],
     },
     {
       label: "Revenue YTD",
       value: "1420000",
       trend: 24.6,
       trendDirection: "up",
-      sparklineData: [20, 25, 30, 28, 35, 50, 60],
+      sparklineData: [35, 55, 45, 65, 55, 75, 65, 85, 75, 85, 95],
     },
     {
       label: "Active Deals",
       value: "43",
       trend: 8.2,
       trendDirection: "up",
-      sparklineData: [5, 10, 8, 15, 12, 18, 20],
+      sparklineData: [35, 55, 45, 65, 55, 75, 65, 85, 75, 85, 95],
     },
     {
       label: "Completed Tasks",
       value: "156",
       trend: 24.6,
       trendDirection: "up",
-      sparklineData: [30, 40, 35, 50, 45, 60, 70],
+      sparklineData: [35, 55, 45, 65, 55, 75, 65, 85, 75, 85, 95],
     },
   ],
 
   revenue: {
     total: "AED 1,621,000",
-    trend: 24.6,
+    trend: 18.4,
     data: [
       { month: "Jan", thisYear: 80, lastYear: 90 },
       { month: "Feb", thisYear: 85, lastYear: 110 },
@@ -212,7 +212,7 @@ export const getMockDashboardData = (period: Period): DashboardData => {
       value: `${current}`,
       trend,
       trendDirection,
-      sparklineData: Array.from({ length: 7 }, () => getRandom(min, max)),
+      sparklineData: Array.from({ length: 11 }, () => getRandom(min, max)),
     };
   };
   return {

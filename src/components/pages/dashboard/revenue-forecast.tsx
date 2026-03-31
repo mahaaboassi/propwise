@@ -53,7 +53,7 @@ const RevenueForecast = () => {
             {data?.revenue.total}
           </span>
 
-          <Badge variant={"default"} className="text-[var(--content-badge-up)] bg-[var(--bg-badge-up)] flex items-center h-[14.67px] w-[54.56px]">
+          <Badge variant={"default"} className="text-[var(--content-badge-up)] bg-[var(--bg-badge-up)] flex items-center h-[14.67px] ">
             <TrendingUp className="size-[10px]" /> +{data?.revenue.trend}%
           </Badge>
 
